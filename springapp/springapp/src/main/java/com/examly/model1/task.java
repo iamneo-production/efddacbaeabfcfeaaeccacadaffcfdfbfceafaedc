@@ -13,11 +13,11 @@ public class task
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name ="Id")
-    private Long id;
-    private String title;
-    private String type;
-    private Date dueDate;
-    private String description;
+    private Long taskId;
+    private String taskHolderName;
+    private Date taskDate;
+    private String taskName;
+    private String taskStatus;
   
     
 }
