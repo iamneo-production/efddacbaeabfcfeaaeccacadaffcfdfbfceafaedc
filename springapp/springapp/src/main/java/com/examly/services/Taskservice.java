@@ -4,6 +4,9 @@ import java.util.List;
 import com.examly.model1.task;
 import org.springframework.stereotype.Service;
 
+import com.examly.repository.Taskrepository;
+import lombok.AllArgsConstructor;
+
 @Service
 @AllArgsConstructor
 public class Taskservice{
@@ -18,7 +21,7 @@ public class Taskservice{
         this.taskRepository = taskRepository;
     }
     
-    @Transactions(readOnly =true)
+    @Transactional(readOnly =true)
     public List<task> getTasks()
     {
         return taskRepository.findAll();
