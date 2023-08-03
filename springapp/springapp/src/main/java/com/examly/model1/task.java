@@ -23,6 +23,13 @@ public class task
     private String taskName;
     private String taskStatus;
     
+    public task(Long taskId, String taskHolderName, Date taskDate, String taskName, String taskStatus) {
+        this.taskId = taskId;
+        this.taskHolderName = taskHolderName;
+        this.taskDate = taskDate;
+        this.taskName = taskName;
+        this.taskStatus = taskStatus;
+    }
     public Long getTaskId() {
         return taskId;
     }
@@ -52,6 +59,19 @@ public class task
     }
     public void setTaskStatus(String taskStatus) {
         this.taskStatus = taskStatus;
+    }
+    @Override
+    public String toString() {
+        return "task [taskId=" + taskId + ", taskHolderName=" + taskHolderName + ", taskDate=" + taskDate
+                + ", taskName=" + taskName + ", taskStatus=" + taskStatus + "]";
+    }
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
   
     
