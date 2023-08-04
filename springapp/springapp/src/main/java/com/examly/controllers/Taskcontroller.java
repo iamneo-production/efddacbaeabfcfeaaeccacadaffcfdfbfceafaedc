@@ -26,10 +26,10 @@ public class Taskcontroller {
     
     private Taskservice taskservice;
 
-    @GetMapping("/task")
+    @GetMapping("/alltasks")
     public List<Task> getTask()
     {
-        return taskservice.getTasks();
+        return taskservice.getAllTasks();
     }
 
     @PostMapping("/task")
@@ -38,7 +38,7 @@ public class Taskcontroller {
         return taskservice.save(task); 
     }
 
-    @GetMapping("/task/{id}")
+    @GetMapping("/getTask/{id}")
     public Task getById(@PathVariable Long id)
     {
         return taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Requested Task not found"));
@@ -67,7 +67,7 @@ public class Taskcontroller {
         }
         }
 
-        @DeleteMapping("/task/{id}")
+        @DeleteMapping("/deleteTask/{id}")
         public ResponseEntity<?> deleteTask(@PathVariable Long id)
     {
         if(taskservice.existById(id))

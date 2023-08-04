@@ -23,7 +23,7 @@ public class Taskservice{
     }
     
     @Transactional(readOnly =true)
-    public List<Task> getTasks()
+    public List<Task> getAllTasks()
     {
         return taskRepository.getAllTaskTaskDateDesc();
     }
