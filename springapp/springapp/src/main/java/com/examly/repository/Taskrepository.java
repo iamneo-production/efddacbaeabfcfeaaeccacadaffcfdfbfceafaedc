@@ -3,12 +3,9 @@ package com.examly.repository;
 import com.examly.model.Task;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+@Repository
 public interface Taskrepository extends JpaRepository<Task,Long>{
     
-    @Query(value="Select * from task order by taskDate desc",nativeQuery = true)
-    public List<Task> getAllTaskTaskDateDesc();
 }
