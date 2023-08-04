@@ -17,7 +17,7 @@ public class Taskcontroller {
     
     private Taskservice taskservice;
 
-    @GetMapping("/tasks")
+    @GetMapping("/task")
     public List<task> getTask()
     {
         return taskservice.getTasks();
