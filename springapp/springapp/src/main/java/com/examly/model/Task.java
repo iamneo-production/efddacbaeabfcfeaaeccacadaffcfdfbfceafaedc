@@ -5,31 +5,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Column;
 
 @Entity
-@Table(name ="task")
+
 public class Task 
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name ="Id")
     private Long taskId;
-
-    @Column(name ="task_HolderName")
     private String taskHolderName;
-
-    @Column(name ="task_Date")
     private Date taskDate;
-
-    @Column(name ="task_Name")
     private String taskName;
-
-    @Column(name ="task_Status")
     private String taskStatus;
     
-    Task(String taskHolderName, Date taskDate, String taskName, String taskStatus) {
-        super();
+    Task(Long taskId, String taskHolderName, Date taskDate, String taskName, String taskStatus) {
+        this.taskId = taskId;
         this.taskHolderName = taskHolderName;
         this.taskDate = taskDate;
         this.taskName = taskName;
@@ -64,5 +56,18 @@ public class Task
     }
     public void setTaskStatus(String taskStatus) {
         this.taskStatus = taskStatus;
-    } 
+    }
+    @Override
+    public String toString() {
+        return "task [taskId=" + taskId + ", taskHolderName=" + taskHolderName + ", taskDate=" + taskDate
+                + ", taskName=" + taskName + ", taskStatus=" + taskStatus + "]";
+    }
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }   
 }
