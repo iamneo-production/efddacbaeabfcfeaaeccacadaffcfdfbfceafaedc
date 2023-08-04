@@ -67,13 +67,15 @@ public class Taskcontroller {
         }
         }
 
-        @DeleteMapping
+        @DeleteMapping("/task/{id}")
         public ResponseEntity<?> deleteTask(@PathVariable Long id)
     {
         if(taskservice.existById(id))
         {
             taskservice.delete(id);
-            return ResponseEntity.ok().body(task);
+            HashMap<String,String>message=new HashMap<>();
+            message.put("message",id + "task removed");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
         }
         else
         {
