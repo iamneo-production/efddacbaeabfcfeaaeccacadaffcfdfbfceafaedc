@@ -29,7 +29,7 @@ public class Taskservice{
     }
 
     @Transactional
-    public Task save(Task task) {
+    public Task saveTask(Task task) {
         return taskRepository.saveAndFlush(task);
     }
 

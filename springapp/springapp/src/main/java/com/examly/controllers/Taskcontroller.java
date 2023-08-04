@@ -35,7 +35,7 @@ public class Taskcontroller {
     @PostMapping("/task")
     public Task addTask(@RequestBody Task task)
     {
-        return taskservice.save(task); 
+        return taskservice.saveTask(task); 
     }
 
     @GetMapping("/getTask/{id}")
@@ -56,7 +56,7 @@ public class Taskcontroller {
             task.setTaskName(taskPara.getTaskName());
             task.setTaskStatus(taskPara.getTaskStatus());
 
-            taskservice.save(task);
+            taskservice.saveTask(task);
             return ResponseEntity.ok().body(task);
         }
         else
