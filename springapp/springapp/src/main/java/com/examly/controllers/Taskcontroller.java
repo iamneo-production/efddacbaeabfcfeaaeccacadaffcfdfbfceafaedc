@@ -37,7 +37,8 @@ public class Taskcontroller {
     public Task addTask(@RequestBody Task taskPara,@PathVariable Long id)
     {
         if(taskservice.existById(id)){
-            Task task=taskservice.getTaskById
+            Task task=taskservice.getTaskById(id).orElseThrow(()->EntityNotFoundEception("Requested Task not found"));
+            task.set
         }
     }
 }

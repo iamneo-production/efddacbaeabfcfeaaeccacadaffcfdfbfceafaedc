@@ -36,4 +36,9 @@ public class Taskservice{
     public boolean existById(Long id){
         return taskRepository.existsById(id);
     }
+
+    @Transactional(readOnly =true)
+    public Optional<Task> getTaskById(Long id){
+        return taskRepository.findById(id);
+    }
 }
