@@ -25,7 +25,7 @@ public class Taskservice{
     @Transactional(readOnly =true)
     public List<Task> getTasks()
     {
-        return taskRepository.findAll();
+        return taskRepository.getAllTaskTaskDateDesc();
     }
 
     @Transactional
