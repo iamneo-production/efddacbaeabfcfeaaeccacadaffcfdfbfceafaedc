@@ -8,9 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Column;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 
 public class task 
 {
@@ -67,12 +64,10 @@ public class task
     }
     @Override
     public boolean equals(Object obj) {
-        // TODO Auto-generated method stub
         return super.equals(obj);
     }
     @Override
     public int hashCode() {
-        // TODO Auto-generated method stub
         return super.hashCode();
     }
   
