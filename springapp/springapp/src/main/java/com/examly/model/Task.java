@@ -1,4 +1,4 @@
-package com.examly.model1;
+package com.examly.model;
 
 import java.util.Date;
 import javax.persistence.GenerationType;
@@ -9,7 +9,7 @@ import javax.persistence.Column;
 
 @Entity
 
-public class task 
+public class Task 
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,7 +20,7 @@ public class task
     private String taskName;
     private String taskStatus;
     
-    public task(Long taskId, String taskHolderName, Date taskDate, String taskName, String taskStatus) {
+    Task(Long taskId, String taskHolderName, Date taskDate, String taskName, String taskStatus) {
         this.taskId = taskId;
         this.taskHolderName = taskHolderName;
         this.taskDate = taskDate;

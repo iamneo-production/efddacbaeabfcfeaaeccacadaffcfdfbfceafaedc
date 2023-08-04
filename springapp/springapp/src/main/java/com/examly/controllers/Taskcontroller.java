@@ -2,7 +2,7 @@ package com.examly.controllers;
 
 import java.util.List;
 
-import com.examly.model1.task;
+import com.examly.model.Task;
 import com.examly.services.Taskservice;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,7 +18,7 @@ public class Taskcontroller {
     private Taskservice taskservice;
 
     @GetMapping("/task")
-    public List<task> getTask()
+    public List<Task> getTask()
     {
         return taskservice.getTasks();
 

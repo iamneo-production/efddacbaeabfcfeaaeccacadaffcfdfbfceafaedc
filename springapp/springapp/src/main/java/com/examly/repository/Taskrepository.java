@@ -1,8 +1,9 @@
 package com.examly.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import com.examly.model1.task;
+import com.examly.model.Task;
 
-public interface Taskrepository extends JpaRepository<task,Long>{
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface Taskrepository extends JpaRepository<Task,Long>{
     
 }
