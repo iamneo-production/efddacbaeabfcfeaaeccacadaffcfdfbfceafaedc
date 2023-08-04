@@ -69,7 +69,5 @@ public class Task
     @Override
     public int hashCode() {
         return super.hashCode();
-    }
-  
-    
+    }   
 }
