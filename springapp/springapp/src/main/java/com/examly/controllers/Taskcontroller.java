@@ -10,6 +10,7 @@ import com.examly.services.Taskservice;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +39,10 @@ public class Taskcontroller {
     }
 
     @GetMapping("/task/{id}")
-    public Task getById(@PathVariable Long)
+    public Task getById(@PathVariable Long id)
+    {
+        return taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Requested Task not found"));
+    }
 
     @PutMapping("/task/{id}")
     public ResponseEntity<?> addTask(@RequestBody Task taskPara,@PathVariable Long id)
@@ -62,4 +66,21 @@ public class Taskcontroller {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
         }
         }
+
+        @DeleteMapping
+        public ResponseEntity<?> deleteTask(@PathVariable Long id)
+    {
+        if(taskservice.existById(id))
+        {
+            taskservice.delete(id);
+            return ResponseEntity.ok().body(task);
+        }
+        else
+        {
+            HashMap<String,String>message=new HashMap<>();
+            message.put("message",id+"task not fund or matched");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+        }
+        }
+
     }
