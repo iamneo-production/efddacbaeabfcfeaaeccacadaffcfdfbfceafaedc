@@ -2,6 +2,7 @@ package com.examly.controllers;
 
 import java.util.List;
 
+import com.examly.model1.task;
 import com.examly.services.Taskservice;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
