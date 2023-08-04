@@ -1,8 +1,8 @@
 package com.examly.services;
 
 import java.util.List;
-import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,41 +11,24 @@ import com.examly.repository.Taskrepository;
 
 @Service
 public class Taskservice{
-    
-    private Taskrepository taskRepository;
 
-    public Taskrepository getTaskRepository() {
-        return taskRepository;
+    @Autowired
+    private Taskrepository repo;
+	
+	public List<Task> listAll() {
+        return repo.findAll();
     }
+     
+    public void save(Task task) {
+        repo.save(task);
+    }
+     
+    public Task get(long id) {
+        return repo.findById(id).get();
+    } 
 
-    public void setTaskRepository(Taskrepository taskRepository) {
-        this.taskRepository = taskRepository;
+    public void delete(long id) {
+        repo.deleteById(id);
     }
-    
-    @Transactional(readOnly =true)
-    public List<Task> getAllTasks()
-    {
-        return taskRepository.getAllTaskTaskDateDesc();
-    }
-
-    @Transactional
-    public Task saveTask(Task task) {
-        return taskRepository.saveAndFlush(task);
-    }
-
-    @Transactional(readOnly =true)
-    public boolean existById(Long id){
-        return taskRepository.existsById(id);
-    }
-
-    @Transactional(readOnly =true)
-    public Optional<Task> getTaskById(Long id){
-        return taskRepository.findById(id);
-    }
-
-    public void delete(Long id)
-    {
-        taskRepository.deleteById(id);
-    }
-
 }
+
