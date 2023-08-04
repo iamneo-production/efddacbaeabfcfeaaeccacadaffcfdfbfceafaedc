@@ -7,6 +7,7 @@ import javax.persistence.EntityNotFoundException;
 import com.examly.model.Task;
 import com.examly.services.Taskservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,72 +18,42 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1")
-@CrossOrigin("*")
+@RequestMapping("/Task")
 public class Taskcontroller {
     
-    private Taskservice taskservice;
+    @Autowired
+    private Taskservice service;
 
-    @GetMapping("/alltasks")
-    public List<Task> getTask()
-    {
-        return taskservice.getAllTasks();
-    }
+      @GetMapping("/addcourse")
+      public String add(Model model) {
+          List<Task> listcourse = service.listAll();
+          model.addAttribute("listcourse", listcourse);
+          model.addAttribute("course", new Task());
+          return "addcourse";
+      }
 
-    @PostMapping("/task")
-    public Task addTask(@RequestBody Task task)
-    {
-        return taskservice.saveTask(task); 
-    }
+      @RequestMapping(value = "/save", method = RequestMethod.POST)
+      public String saveCourse(@ModelAttribute("course") Task task) {
+          service.save(task);
+          return "redirect:/task";
+      }
 
-    @GetMapping("/getTask/{id}")
-    public Task getById(@PathVariable Long id)
-    {
-        return taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Requested Task not found"));
-    }
-
-    @PutMapping("/task/{id}")
-    public ResponseEntity<?> addTask(@RequestBody Task taskPara,@PathVariable Long id)
-    {
-        if(taskservice.existById(id))
-        {
-            Task task=taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Requested Task not found"));
-            task.setTaskId(taskPara.getTaskId());
-            task.setTaskHolderName(taskPara.getTaskHolderName());
-            task.setTaskDate(taskPara.getTaskDate());
-            task.setTaskName(taskPara.getTaskName());
-            task.setTaskStatus(taskPara.getTaskStatus());
-
-            taskservice.saveTask(task);
-            return ResponseEntity.ok().body(task);
-        }
-        else
-        {
-            HashMap<String,String>message=new HashMap<>();
-            message.put("message",id+"task not fund or matched");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-        }
-        }
-
-        @DeleteMapping("/deleteTask/{id}")
-        public ResponseEntity<?> deleteTask(@PathVariable Long id)
-    {
-        if(taskservice.existById(id))
-        {
-            taskservice.delete(id);
-            HashMap<String,String>message=new HashMap<>();
-            message.put("message",id + "task removed");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-        }
-        else
-        {
-            HashMap<String,String>message=new HashMap<>();
-            message.put("message",id+"task not fund or matched");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-        }
-        }
-
-    }
+      @RequestMapping("/edit/{id}")
+      public ModelAndView showEditCoursePage(@PathVariable(name = "id") int id) {
+          ModelAndView mav = new ModelAndView("addcourse");
+          Course course = service.get(id);
+          mav.addObject("course", course);
+          return mav;
+          
+      }
+      @RequestMapping("/delete/{id}")
+      public String deleteCoursePage(@PathVariable(name = "id") int id) {
+          service.delete(id);
+          return "redirect:/task";
+      }
+}
+   
