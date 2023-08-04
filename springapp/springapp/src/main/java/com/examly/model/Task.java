@@ -5,23 +5,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Column;
 
 @Entity
-
+@Table(name ="task")
 public class Task 
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="Id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long taskId;
+    
+    @Column(name ="task_HolderName")
     private String taskHolderName;
+
+    @Column(name ="task_Date")
     private Date taskDate;
+
+    @Column(name ="task_Name")
     private String taskName;
+
+    @Column(name ="task_Status")
     private String taskStatus;
     
-    Task(Long taskId, String taskHolderName, Date taskDate, String taskName, String taskStatus) {
-        this.taskId = taskId;
+    Task(String taskHolderName, Date taskDate, String taskName, String taskStatus) {
         this.taskHolderName = taskHolderName;
         this.taskDate = taskDate;
         this.taskName = taskName;
