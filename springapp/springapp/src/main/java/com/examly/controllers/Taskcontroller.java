@@ -7,6 +7,8 @@ import com.examly.services.Taskservice;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +23,12 @@ public class Taskcontroller {
     public List<Task> getTask()
     {
         return taskservice.getTasks();
+    }
 
+    @PostMapping("/task")
+    public Task addTask(@RequestBody Task task)
+    {
+        return taskservice.save(task);
+        
     }
 }
