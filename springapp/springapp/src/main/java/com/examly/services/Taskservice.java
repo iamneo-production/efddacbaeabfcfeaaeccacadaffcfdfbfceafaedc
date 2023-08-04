@@ -27,7 +27,13 @@ public class Taskservice{
         return taskRepository.findAll();
     }
 
+    @Transactional
     public Task save(Task task) {
         return taskRepository.saveAndFlush(task);
+    }
+
+    @Transactional(readOnly =true)
+    public boolean existById(Long id){
+        return taskRepository.existsById(id);
     }
 }
