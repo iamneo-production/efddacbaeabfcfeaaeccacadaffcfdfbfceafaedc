@@ -67,7 +67,7 @@ public class Taskcontroller {
         }
         }
 
-        @DeleteMapping("/deleteTask/{id}")
+        @DeleteMapping("/deleteTask")
         public ResponseEntity<?> deleteTask(@PathVariable Long id)
     {
         if(taskservice.existById(id))
