@@ -1,10 +1,12 @@
 package com.examly.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.examly.model.Task;
 import com.examly.services.Taskservice;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,10 +37,10 @@ public class Taskcontroller {
     }
 
     @PutMapping("/task/{id}")
-    public Task addTask(@RequestBody Task taskPara,@PathVariable Long id)
+    public ResponseEntity<?> addTask(@RequestBody Task taskPara,@PathVariable Long id)
     {
         if(taskservice.existById(id)){
-            Task task=taskservice.getTaskById(id).orElseThrow(()->EntityNotFoundEception("Requested Task not found"));
+            Task task=taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Requested Task not found"));
             task.setTaskId(taskPara.getTaskId());
             task.setTaskHolderName(taskPara.getTaskHolderName());
             task.setTaskDate(taskPara.getTaskDate());
@@ -47,6 +49,13 @@ public class Taskcontroller {
 
             taskservice.save(task);
             return ResponseEntity.ok().body(task);
+        }
+        else
+        {
+            HashMap<String,String>message=new HashMap<>();
+            message.put("message",id+"task not fund or matched");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+        }
         }
     }
 }
