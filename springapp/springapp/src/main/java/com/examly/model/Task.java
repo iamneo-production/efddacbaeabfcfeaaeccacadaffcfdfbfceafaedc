@@ -61,13 +61,5 @@ public class Task
     public String toString() {
         return "task [taskId=" + taskId + ", taskHolderName=" + taskHolderName + ", taskDate=" + taskDate
                 + ", taskName=" + taskName + ", taskStatus=" + taskStatus + "]";
-    }
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }   
+    } 
 }
