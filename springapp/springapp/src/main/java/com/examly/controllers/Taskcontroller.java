@@ -2,7 +2,7 @@ package com.examly.controllers;
 
 import java.util.HashMap;
 import java.util.List;
-//import java.util.function.Supplier;
+import javax.persistence.EntityNotFoundException;
 
 import com.examly.model.Task;
 import com.examly.services.Taskservice;
@@ -37,10 +37,14 @@ public class Taskcontroller {
         return taskservice.save(task); 
     }
 
+    @GetMapping("/task/{id}")
+    public Task getById(@PathVariable Long)
+
     @PutMapping("/task/{id}")
     public ResponseEntity<?> addTask(@RequestBody Task taskPara,@PathVariable Long id)
     {
-        if(taskservice.existById(id)){
+        if(taskservice.existById(id))
+        {
             Task task=taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Requested Task not found"));
             task.setTaskId(taskPara.getTaskId());
             task.setTaskHolderName(taskPara.getTaskHolderName());
@@ -59,4 +63,3 @@ public class Taskcontroller {
         }
         }
     }
-}
