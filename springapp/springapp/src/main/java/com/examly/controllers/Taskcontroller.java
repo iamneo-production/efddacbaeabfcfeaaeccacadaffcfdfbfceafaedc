@@ -35,7 +35,7 @@ public class Taskcontroller {
         return taskRepository.findAll();
     }
 
-    @PostMapping("/tasks")
+    @PostMapping("/saveTask")
     public ResponseEntity<?> saveTask(@RequestBody Task taskPara,@PathVariable Long id)
     {
         if(taskservice.existById(id))
