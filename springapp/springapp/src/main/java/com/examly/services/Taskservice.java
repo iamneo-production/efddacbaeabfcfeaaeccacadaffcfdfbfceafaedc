@@ -16,15 +16,15 @@ public class Taskservice{
         return taskRepository;
     }
 
+    public void setTaskRepository(Taskrepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+
     public Task addTask(Task task) {
         return taskRepository.save(task);
     }
 
-    public void setTaskRepository(Taskrepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
-    
-    public List<Task> getAllTasks()
+    public List<Task> alltasks()
     {
         return taskRepository.findAll();
     }
