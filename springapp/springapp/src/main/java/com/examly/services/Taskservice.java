@@ -29,10 +29,6 @@ public class Taskservice{
         return taskRepository.findAll();
     }
 
-    public Task saveTask(Task task) {
-        return taskRepository.save(task);
-    }
-
     public boolean existById(Long id) {
         return taskRepository.existsById(id);
     }

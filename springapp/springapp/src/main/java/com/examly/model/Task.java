@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Columns;
-
 @Entity
 @Table(name ="tasks")
 @org.hibernate.annotations.Immutable
@@ -64,9 +62,5 @@ public class Task
     public void setTaskStatus(String taskStatus) {
         this.taskStatus = taskStatus;
     }
-    @Override
-    public String toString() {
-        return "task [taskId=" + taskId + ", taskHolderName=" + taskHolderName + ", taskDate=" + taskDate
-                + ", taskName=" + taskName + ", taskStatus=" + taskStatus + "]";
-    } 
+
 }
