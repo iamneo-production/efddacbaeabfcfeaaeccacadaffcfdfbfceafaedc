@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.examly.model.Task;
 import com.examly.repository.Taskrepository;
 
@@ -34,7 +32,8 @@ public class Taskservice{
     public Task updateTask(Long id,Task task)
     {
         Task updatedTask = taskRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid task id:" +id));
-        updatedTask.setTaskStatus(task.);
+        updatedTask.setTaskStatus(task.getTaskStatus());
+        return taskRepository.save(updatedTask);
     }   
 
     public Optional<Task> getTaskById(Long id)
@@ -42,16 +41,9 @@ public class Taskservice{
         return taskRepository.findById(id);
     }
 
-    public void delete(Long id)
+    public void deleteTask(Long id)
     {
-        taskRepository.delete(id);
-    }
-
-    public Task updateTask(Long id, Task task) {
-        return null;
-    }
-
-    public void deleteTask(Long id) {
+        taskRepository.deleteById(id);
     }
 
 }
