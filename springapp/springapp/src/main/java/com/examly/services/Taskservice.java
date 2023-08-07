@@ -47,7 +47,7 @@ public class Taskservice{
 
     public void deleteTask(Long id)
     {
-        return taskRepository.deleteById(id);
+        taskRepository.deleteById(id);
     }
 
 }
