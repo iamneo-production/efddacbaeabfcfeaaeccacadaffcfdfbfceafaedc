@@ -19,19 +19,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/tasks")
+@RequestMapping("/Task")
 public class Taskcontroller {
     
     @Autowired
     private Taskservice taskservice;
     private Taskrepository taskRepository;
-
-
-    @GetMapping("/alltasks")
-    public List<Task> getAllTasks()
-    {
-        return taskRepository.findAll();
-    }
 
     @PostMapping("/saveTask")
     public ResponseEntity<?> saveTask(@RequestBody Task taskPara,@PathVariable Long id)
@@ -61,18 +54,24 @@ public class Taskcontroller {
         return ResponseEntity.ok(updatedTask);
     }
 
-    @GetMapping("/getTask/{id}")
-    public Task getTaskById(@PathVariable Long id)
-    {
-        return taskRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Task not found with id:" +id)); 
-    }
-
     @GetMapping("deleteTask/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id)
     {
         taskservice.deleteTask(id);
         return ResponseEntity.noContent().build();
 
+    }
+
+    @GetMapping("/alltasks")
+    public List<Task> getAllTasks()
+    {
+        return taskRepository.findAll();
+    }
+
+    @GetMapping("/getTask/{id}")
+    public Task getTaskById(@PathVariable Long id)
+    {
+        return taskRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Task not found with id:" +id)); 
     }
 }
 
