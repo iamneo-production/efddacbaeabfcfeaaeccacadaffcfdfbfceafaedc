@@ -52,4 +52,7 @@ public class Taskservice{
         return null;
     }
 
+    public void deleteTask(Long id) {
+    }
+
 }
