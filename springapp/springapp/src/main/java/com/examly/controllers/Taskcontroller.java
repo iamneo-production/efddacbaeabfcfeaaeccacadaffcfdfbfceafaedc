@@ -52,7 +52,7 @@ public class Taskcontroller {
     @GetMapping("/tasks/{id}")
     public Task getTaskById(@PathVariable Long id)
     {
-        return taskRepository.findById(id).orElseThrow(()->new ResuorceNotFoundException("Task not found with id:" +id)); 
+        return taskRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Task not found with id:" +id)); 
     }
 
     @DeleteMapping("tasks/{id}")
@@ -62,7 +62,6 @@ public class Taskcontroller {
         return ResponseEntity.noContent().build();
 
     }
-}
 }
 
 

@@ -22,24 +22,23 @@ public class Taskservice{
         this.taskRepository = taskRepository;
     }
     
-    @Transactional(readOnly =true)
     public List<Task> getAllTasks()
     {
-        return taskRepository.getAllTaskTaskDateDesc();
+        return taskRepository.findAll();
     }
 
-    @Transactional
     public Task saveTask(Task task) {
         return taskRepository.saveAndFlush(task);
     }
 
-    @Transactional(readOnly =true)
-    public boolean existById(Long id){
-        return taskRepository.existsById(id);
-    }
+    public Task updateTask(Long id,Task task)
+    {
+        Task updatedTask = taskRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid task id:" +id));
+        updatedTask.setTaskStatus(task.);
+    }   
 
-    @Transactional(readOnly =true)
-    public Optional<Task> getTaskById(Long id){
+    public Optional<Task> getTaskById(Long id)
+    {
         return taskRepository.findById(id);
     }
 
