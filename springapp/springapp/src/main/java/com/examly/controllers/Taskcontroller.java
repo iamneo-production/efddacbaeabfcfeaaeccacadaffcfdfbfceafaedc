@@ -27,7 +27,7 @@ public class Taskcontroller {
     @Autowired
     private Taskservice taskservice;
 
-    @GetMapping
+    @GetMapping("/alltasks")
     public List<Task> alltasks() {
         return taskservice.getAllTasks();
     }
@@ -39,7 +39,7 @@ public class Taskcontroller {
     public Task updateTask(@PathVariable Long id, @RequestBody Task task) {
         return taskservice.updateTask(id, task);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteTask")
     public void deleteTask(@PathVariable Long id) {
         taskservice.deleteTask(id);
     }
