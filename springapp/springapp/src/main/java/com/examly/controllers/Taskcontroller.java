@@ -78,7 +78,7 @@ public class Taskcontroller {
         return taskservice.getAllTasks();
     }
 
-    @GetMapping("/getTask")
+    @GetMapping("/getTask/{id}")
     public Task getTask(@PathVariable Long id)
     {
         return taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Task not found with id:" +id)); 
