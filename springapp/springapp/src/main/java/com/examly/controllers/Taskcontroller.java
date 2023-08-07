@@ -11,11 +11,9 @@ import com.examly.repository.Taskrepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +27,7 @@ public class Taskcontroller {
     private Taskrepository taskRepository;
 
 
-    @GetMapping("/tasks")
+    @GetMapping("/alltasks")
     public List<Task> getAllTasks()
     {
         return taskRepository.findAll();
@@ -41,7 +39,6 @@ public class Taskcontroller {
         if(taskservice.existById(id))
         {
             Task task=taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Requested Task not found"));
-            task.setTaskId(taskPara.getTaskId());
             task.setTaskHolderName(taskPara.getTaskHolderName());
             task.setTaskDate(taskPara.getTaskDate());
             task.setTaskName(taskPara.getTaskName());
@@ -57,20 +54,20 @@ public class Taskcontroller {
         }
     }
 
-    @PutMapping("/tasks/{id}")
+    @GetMapping("/changeStatus/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id,@RequestBody Task task)
     {
         Task updatedTask = taskservice.updateTask(id,task);
         return ResponseEntity.ok(updatedTask);
     }
 
-    @GetMapping("/tasks/{id}")
+    @GetMapping("/getTask/{id}")
     public Task getTaskById(@PathVariable Long id)
     {
         return taskRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Task not found with id:" +id)); 
     }
 
-    @DeleteMapping("tasks/{id}")
+    @GetMapping("deleteTask/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id)
     {
         taskservice.deleteTask(id);
