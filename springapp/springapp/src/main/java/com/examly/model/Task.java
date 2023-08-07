@@ -13,7 +13,9 @@ public class Task
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="Id")
+    @Table(name ="tasks")
+
+    @org.hibernate.annotations.Immutable
     private Long taskId;
     private String taskHolderName;
     private Date taskDate;
