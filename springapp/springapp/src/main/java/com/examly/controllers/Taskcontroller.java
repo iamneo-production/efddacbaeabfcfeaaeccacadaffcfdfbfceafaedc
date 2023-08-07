@@ -36,10 +36,25 @@ public class Taskcontroller {
     }
 
     @PostMapping("/tasks")
-    public ResponseEntity<Task> saveTask(@RequestBody Task task)
+    public ResponseEntity<?> saveTask(@RequestBody Task taskPara,@PathVariable Long id)
     {
+        if(taskservice.existById(id))
+        {
+            Task task=taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Requested Task not found"));
+            task.setTaskId(taskPara.getTaskId());
+            task.setTaskHolderName(taskPara.getTaskHolderName());
+            task.setTaskDate(taskPara.getTaskDate());
+            task.setTaskName(taskPara.getTaskName());
+            task.setTaskStatus(taskPara.getTaskStatus());
         taskRepository.save(task);
         return ResponseEntity.ok(task); 
+    }
+    else
+        {
+            HashMap<String,String>message=new HashMap<>();
+            message.put("message",id+"task not fund or matched");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
+        }
     }
 
     @PutMapping("/tasks/{id}")
