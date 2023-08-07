@@ -29,6 +29,10 @@ public class Taskservice{
         return taskRepository.saveAndFlush(task);
     }
 
+    public boolean existById(Long id) {
+        return taskRepository.existsById(id);
+    }
+
     public Task updateTask(Long id,Task task)
     {
         Task updatedTask = taskRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid task id:" +id));
