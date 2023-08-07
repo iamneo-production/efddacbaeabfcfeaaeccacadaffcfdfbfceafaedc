@@ -26,19 +26,12 @@ public class Taskservice{
     }
 
     public Task saveTask(Task task) {
-        return taskRepository.saveAndFlush(task);
+        return taskRepository.save(task);
     }
 
     public boolean existById(Long id) {
         return taskRepository.existsById(id);
     }
-
-    public Task changeStatus(Long id,Task task)
-    {
-        Task updatedTask = taskRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid task id:" +id));
-        updatedTask.setTaskStatus(task.getTaskStatus());
-        return taskRepository.save(updatedTask);
-    }   
 
     public Optional<Task> getTaskById(Long id)
     {

@@ -37,7 +37,7 @@ public class Taskcontroller {
             task.setTaskDate(taskPara.getTaskDate());
             task.setTaskName(taskPara.getTaskName());
             task.setTaskStatus(taskPara.getTaskStatus());
-        taskRepository.saveTask(task);
+        taskRepository.save(task);
         return ResponseEntity.ok(task); 
     }
     else
@@ -52,13 +52,6 @@ public class Taskcontroller {
     public Task saveTask(@RequestBody Task task)
     {
         return taskservice.saveTask(task); 
-    }
-
-    @GetMapping("/changeStatus")
-    public ResponseEntity<Task> changeStatus(@PathVariable Long id,@RequestBody Task task)
-    {
-        Task updatedTask = taskservice.changeStatus(id,task);
-        return ResponseEntity.ok(updatedTask);
     }
 
     @GetMapping("/deleteTask")
