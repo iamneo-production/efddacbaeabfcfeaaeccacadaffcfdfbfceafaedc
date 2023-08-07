@@ -9,39 +9,22 @@ import com.examly.repository.Taskrepository;
 
 @Service
 public class Taskservice{
-    
+
     private Taskrepository taskRepository;
 
-    public Taskrepository getTaskRepository() {
-        return taskRepository;
-    }
-
-    public void setTaskRepository(Taskrepository taskRepository) {
+    public Taskservice(Taskrepository taskRepository) {
         this.taskRepository = taskRepository;
     }
-
-    public Task addTask(Task task) {
-        return taskRepository.save(task);
-    }
-
-    public List<Task> alltasks()
-    {
+    public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
-
-    public boolean existById(Long id) {
-        return taskRepository.existsById(id);
+    public Task createTask(Task task) {
+        return taskRepository.save(task);
     }
-
-    public Optional<Task> getTaskById(Long id)
-    {
-        return taskRepository.findById(id);
+    public Task updateTask(Long id, Task task) {
+        return taskRepository.save(task);
     }
-
-    public void deleteTask(Long id)
-    
-    {
+    public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
-
 }
