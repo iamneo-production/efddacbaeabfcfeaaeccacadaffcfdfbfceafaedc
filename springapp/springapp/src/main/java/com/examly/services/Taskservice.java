@@ -48,4 +48,8 @@ public class Taskservice{
         taskRepository.delete(id);
     }
 
+    public Task updateTask(Long id, Task task) {
+        return null;
+    }
+
 }
