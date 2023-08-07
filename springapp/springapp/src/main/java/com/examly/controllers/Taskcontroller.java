@@ -7,6 +7,7 @@ import javax.persistence.EntityNotFoundException;
 import com.examly.model.Task;
 import com.examly.services.Taskservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,72 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1")
-@CrossOrigin("*")
+@RequestMapping("/tasks")
 public class Taskcontroller {
     
+    @Autowired
     private Taskservice taskservice;
+    private Taskrepository taskRepository;
 
-    @GetMapping("/alltasks")
-    public List<Task> getTask()
-    {
-        return taskservice.getAllTasks();
-    }
 
-    @PostMapping("/task")
-    public Task addTask(@RequestBody Task task)
-    {
-        return taskservice.saveTask(task); 
-    }
-
-    @GetMapping("/getTask/{id}")
-    public Task getById(@PathVariable Long id)
-    {
-        return taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Requested Task not found"));
-    }
-
-    @PutMapping("/task/{id}")
-    public ResponseEntity<?> addTask(@RequestBody Task taskPara,@PathVariable Long id)
-    {
-        if(taskservice.existById(id))
-        {
-            Task task=taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Requested Task not found"));
-            task.setTaskId(taskPara.getTaskId());
-            task.setTaskHolderName(taskPara.getTaskHolderName());
-            task.setTaskDate(taskPara.getTaskDate());
-            task.setTaskName(taskPara.getTaskName());
-            task.setTaskStatus(taskPara.getTaskStatus());
-
-            taskservice.saveTask(task);
-            return ResponseEntity.ok().body(task);
-        }
-        else
-        {
-            HashMap<String,String>message=new HashMap<>();
-            message.put("message",id+"task not fund or matched");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-        }
-        }
-
-        @DeleteMapping("/deleteTask/{id}")
-        public ResponseEntity<?> deleteTask(@PathVariable Long id)
-    {
-        if(taskservice.existById(id))
-        {
-            taskservice.delete(id);
-            HashMap<String,String>message=new HashMap<>();
-            message.put("message",id + "task removed");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-        }
-        else
-        {
-            HashMap<String,String>message=new HashMap<>();
-            message.put("message",id+"task not fund or matched");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-        }
-        }
-
-    }
     @GetMapping("/tasks")
     public List<Task> getAllTasks()
     {
@@ -99,9 +42,20 @@ public class Taskcontroller {
         return ResponseEntity.ok(task); 
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/tasks/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id,@RequestBody Task task)
     {
         Task updatedTask = taskservice.updateTask(id,task);
         return ResponseEntity.ok(updatedTask);
     }
+
+    @GetMapping("/tasks/{id}")
+    public Task getTaskById(@PathVariable Long id)
+    {
+        return taskRepository.findById(id).orElseThrow(()->new ResuorceNotFoundException("Task not found with id:" +id)); 
+    }
+
+    @DeleteMapping("tasks/{id}")
+    public ResponseEntity<void
+
+
