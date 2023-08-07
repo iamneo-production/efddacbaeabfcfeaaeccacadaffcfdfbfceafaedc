@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@EnableRepositories("com.examly")
 @ComponentScan(basePackages= {"com.examly"})
 public class SpringappApplication {
 
