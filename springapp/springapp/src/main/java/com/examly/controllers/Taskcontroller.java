@@ -27,25 +27,10 @@ public class Taskcontroller {
     private Taskservice taskservice;
     private Taskrepository taskRepository;
 
-    @PutMapping("/addTask")
-    public ResponseEntity<?> addTask(@RequestBody Task taskPara,@PathVariable Long id)
-    {
-        if(taskservice.existById(id))
-        {
-            Task task=taskservice.getTaskById(id).orElseThrow(()->new EntityNotFoundException("Requested Task not found"));
-            task.setTaskHolderName(taskPara.getTaskHolderName());
-            task.setTaskDate(taskPara.getTaskDate());
-            task.setTaskName(taskPara.getTaskName());
-            task.setTaskStatus(taskPara.getTaskStatus());
-        taskRepository.save(task);
-        return ResponseEntity.ok(task); 
-    }
-    else
-        {
-            HashMap<String,String>message=new HashMap<>();
-            message.put("message",id+"task not fund or matched");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-        }
+    @PostMapping
+    public ResponseEntity<Task> addTask(@RequestBody Task task) {
+        Task createdTask = taskservice.addTask(task);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdTask);
     }
 
     @PostMapping("/saveTask")
@@ -75,7 +60,7 @@ public class Taskcontroller {
     @GetMapping("/alltasks")
     public List<Task> alltasks()
     {
-        return taskservice.getAllTasks();
+        return taskRepository.findAll();
     }
 
     @GetMapping("/getTask/{id}")

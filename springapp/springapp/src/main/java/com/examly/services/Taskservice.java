@@ -16,6 +16,10 @@ public class Taskservice{
         return taskRepository;
     }
 
+    public Task addTask(Task task) {
+        return taskRepository.save(task);
+    }
+
     public void setTaskRepository(Taskrepository taskRepository) {
         this.taskRepository = taskRepository;
     }
