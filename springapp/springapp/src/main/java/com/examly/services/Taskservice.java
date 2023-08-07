@@ -33,7 +33,7 @@ public class Taskservice{
         return taskRepository.existsById(id);
     }
 
-    public Task updateTask(Long id,Task task)
+    public Task changeStatus(Long id,Task task)
     {
         Task updatedTask = taskRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid task id:" +id));
         updatedTask.setTaskStatus(task.getTaskStatus());

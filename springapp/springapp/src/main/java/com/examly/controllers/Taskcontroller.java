@@ -27,8 +27,8 @@ public class Taskcontroller {
     private Taskservice taskservice;
     private Taskrepository taskRepository;
 
-    @PutMapping("/saveTask")
-    public ResponseEntity<?> saveTask(@RequestBody Task taskPara,@PathVariable Long id)
+    @PutMapping("/addTask")
+    public ResponseEntity<?> addTask(@RequestBody Task taskPara,@PathVariable Long id)
     {
         if(taskservice.existById(id))
         {
@@ -48,16 +48,16 @@ public class Taskcontroller {
         }
     }
 
-    @PostMapping("/savetask")
+    @PostMapping("/saveTask")
     public Task saveTask(@RequestBody Task task)
     {
         return taskservice.saveTask(task); 
     }
 
     @GetMapping("/changeStatus/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id,@RequestBody Task task)
+    public ResponseEntity<Task> changeStatus(@PathVariable Long id,@RequestBody Task task)
     {
-        Task updatedTask = taskservice.updateTask(id,task);
+        Task updatedTask = taskservice.changeStatus(id,task);
         return ResponseEntity.ok(updatedTask);
     }
 
@@ -80,13 +80,13 @@ public class Taskcontroller {
         }
 
     @GetMapping("/alltasks")
-    public List<Task> getAllTasks()
+    public List<Task> alltasks()
     {
-        return taskservice.findAll();
+        return taskservice.getAllTasks();
     }
 
     @GetMapping("/getTask/{id}")
-    public Task getTaskById(@PathVariable Long id)
+    public Task getTask(@PathVariable Long id)
     {
         return taskservice.findById(id).orElseThrow(()->new EntityNotFoundException("Task not found with id:" +id)); 
     }
