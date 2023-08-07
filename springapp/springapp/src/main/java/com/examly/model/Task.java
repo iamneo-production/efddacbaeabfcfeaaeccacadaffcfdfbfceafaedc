@@ -3,19 +3,22 @@ package com.examly.model;
 import java.util.Date;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Column;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Columns;
 
 @Entity
-
+@Table(name ="tasks")
+@org.hibernate.annotations.Immutable
 public class Task 
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Table(name ="tasks")
 
-    @org.hibernate.annotations.Immutable
+    @Column(name = "id")
     private Long taskId;
     private String taskHolderName;
     private Date taskDate;

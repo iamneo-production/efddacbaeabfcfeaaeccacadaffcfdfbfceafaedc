@@ -6,11 +6,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(scanBasePackages={
-	"com.examly.model"})
+@SpringBootApplication
 @EnableJpaRepositories
-@EntityScan("com.examly")
-@ComponentScan("com.examly")
+@ComponentScan(basePackages= {"com.examly.controller"})
 public class SpringappApplication {
 
 	public static void main(String[] args) {
