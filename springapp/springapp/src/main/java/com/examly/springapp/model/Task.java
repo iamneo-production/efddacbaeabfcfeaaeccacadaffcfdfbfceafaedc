@@ -19,5 +19,14 @@ public class Task
     private String taskName;
     private String taskStatus;
 
+    public Task(String taskHolderName,Date taskDate,String taskName,String taskStatus)
+    {
+        this.taskHolderName=taskHolderName;
+        this.taskDate=taskDate;
+        this.taskName=taskName;
+        this.taskStatus=taskStatus;
+    }
+
+    public settaskId
 
 }
