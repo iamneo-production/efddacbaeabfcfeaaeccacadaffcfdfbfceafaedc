@@ -17,10 +17,16 @@ public class Taskcontroller {
 
     @Autowired
     private Taskservice taskservice;
-    
-    @PostMapping
+
+    @GetMapping("/")
     public ResponseEntity<Task> addTask(@RequestBody Task task) {
         Task savedTask = taskservice.saveTask(task);
         return new ResponseEntity<>(savedTask, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/saveTask")
+    public Task saveTask(@RequestBody Task task)
+    {
+        return taskservice.saveTask(task);
     }
 }

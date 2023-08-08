@@ -12,8 +12,9 @@ public class Taskservice{
 
     public Task saveTask(Task task) 
     {
-        taskRepository.save(task);
-        return task;
+        Task savedTask = taskRepository.save(task);
+        savedTask.setTaskId(task.getTaskId());
+        return savedTask;
     }
     
 }
