@@ -16,9 +16,9 @@ public class TaskController
         Task savedTask = taskService.createTask(task);
         return ResponseEntity.ok(savedTask);
     }
-    @GetMapping
-    public ResponseEntity<List<Task>> getAllTasks() {
-        List<Task> tasks = taskService.getAllTasks();
+    @GetMapping("/alltasks")
+    public ResponseEntity<List<Task>> alltasks() {
+        List<Task> tasks = taskService.alltasks();
         return ResponseEntity.ok(tasks);
     }
     @GetMapping("/getTask/{taskId}")
