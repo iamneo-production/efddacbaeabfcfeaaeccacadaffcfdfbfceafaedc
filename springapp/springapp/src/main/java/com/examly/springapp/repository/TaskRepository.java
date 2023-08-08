@@ -1,5 +1,10 @@
 package com.examly.repository;
 
-public interface TaskRepository {
-    
+import java.util.List;
+
+@Repository
+public interface TaskRepository extends JpaRepository<Task, Long> 
+{
+    List<Task> findAllByTaskHolderName(Task taskHolderName);
 }
+    

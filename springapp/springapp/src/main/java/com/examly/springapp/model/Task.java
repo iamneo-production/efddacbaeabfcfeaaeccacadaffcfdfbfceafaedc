@@ -42,8 +42,33 @@ public class Task
         this.taskHolderName=taskHolderName;
     }
 
+    public String gettaskDate()
+    {
+        return taskDate;
+    }
 
+    public void settaskDate(Date taskDate)
+    {
+        this.taskDate=taskDate;
+    }
 
+    public String gettaskName()
+    {
+        return taskName;
+    }
 
+    public void settaskName(String taskName)
+    {
+        this.taskName=taskName;
+    }
 
+    public String gettaskStatus()
+    {
+        return taskStatus;
+    }
+
+    public void settaskStatus(String taskStatus)
+    {
+        this.taskStatus=taskStatus;
+    }
 }
