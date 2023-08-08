@@ -2,6 +2,7 @@ package com.examly.springapp.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class Task
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long taskId;
+    
     private String taskHolderName;
     private Date taskDate;
     private String taskName;
@@ -27,6 +29,9 @@ public class Task
         this.taskStatus=taskStatus;
     }
 
-    public settaskId
+    public long setTaskId()
+    {
+        return taskId;
+    }
 
 }
