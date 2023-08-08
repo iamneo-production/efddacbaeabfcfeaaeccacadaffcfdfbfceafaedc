@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import com.examly.model.Task;
 import com.examly.repository.Taskrepository;
+import com.examly.
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +22,13 @@ public class Taskcontroller {
     
     @Autowired
     private Taskrepository taskRepository;
+    private Taskservice taskservice;
+
+    @PostMapping
+    public Task addTask(@RequestBody Task task) {
+        Task savedTask = taskservice.saveTask(task);
+        return new ResponseEntity<>(savedTask, HttpStatus.CREATED);
+    }
 
     @GetMapping("/alltasks")
     public List<Task> alltasks() {
