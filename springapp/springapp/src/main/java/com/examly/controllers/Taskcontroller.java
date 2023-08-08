@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("task")
+@RequestMapping(value="task")
 public class Taskcontroller {
     
     @Autowired
@@ -35,7 +35,7 @@ public class Taskcontroller {
     public ResponseEntity<Task> saveTask(@RequestBody Task task) {
         return ResponseEntity.ok(taskservice.createNewTask(task));
     }
-    @PutMapping("/changeStatus/{id}")
+    @GetMapping("/changeStatus/{id}")
     public ResponseEntity<Task> changeStatus(@PathVariable Long taskId, @RequestBody Task task) {
         task.setTaskId(taskId);
         return ResponseEntity.ok(taskservice.updateTask(task));
@@ -46,7 +46,7 @@ public class Taskcontroller {
     {
         return ResponseEntity.ok(taskservice.findTaskById(taskId));
     }
-    @DeleteMapping("/deleteTask")
+    @GetMapping("/deleteTask")
     public ResponseEntity<Boolean> deleteTask(@PathVariable Long taskId) {
         taskservice.deleteTask(taskId);
         return ResponseEntity.ok(true);
