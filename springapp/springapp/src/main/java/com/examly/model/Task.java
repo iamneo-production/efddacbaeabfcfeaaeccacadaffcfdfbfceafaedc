@@ -6,25 +6,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name ="tasks")
-@org.hibernate.annotations.Immutable
 public class Task 
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    @Column(name = "id")
     private Long taskId;
     private String taskHolderName;
     private Date taskDate;
     private String taskName;
     private String taskStatus;
     
-    Task(Long taskId, String taskHolderName, Date taskDate, String taskName, String taskStatus) {
-        this.taskId = taskId;
+    public Task( String taskHolderName, Date taskDate, String taskName, String taskStatus) {
         this.taskHolderName = taskHolderName;
         this.taskDate = taskDate;
         this.taskName = taskName;
