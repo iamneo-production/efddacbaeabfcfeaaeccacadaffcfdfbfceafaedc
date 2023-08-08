@@ -21,23 +21,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="task")
+@RequestMapping(value="/task")
 public class Taskcontroller {
     
     @Autowired
     private Taskservice taskservice;
+    private Taskrepository taskRepository;
 
     @GetMapping("/alltasks")
-    public ResponseEntity<List<Task>> alltasks() {
-        return ResponseEntity.ok(taskservice.getAllTask());
+    public List<Task> alltasks() {
+        return taskRepository.findAll();
     }
     @PostMapping("/saveTask")
-    public ResponseEntity<Task> saveTask(@RequestBody Task task) {
-        return ResponseEntity.ok(taskservice.createNewTask(task));
+    public Task saveTask(@RequestBody Task task) {
+        return taskRepository.save(task);
     }
-    @GetMapping("/changeStatus/{id}")
-    public ResponseEntity<Task> changeStatus(@PathVariable Long taskId, @RequestBody Task task) {
-        task.setTaskId(taskId);
+    @PutMapping("/changeStatus/{id}")
+    public Task changeStatus(@RequestBody Task task) {
         return ResponseEntity.ok(taskservice.updateTask(task));
     }
 
