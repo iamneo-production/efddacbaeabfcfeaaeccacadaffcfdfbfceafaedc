@@ -33,13 +33,14 @@ public class Taskcontroller {
     }
 
     @GetMapping("/tasks/{taskId}") 
-    public ResponseEntity<Task> getTask(@PathVariable Long taskId) 
+    public ResponseEntity<Task> getTask(@PathVariable Long taskId) {
+
     Task task = taskservice.getTask(taskId);
-    if (task == null) {
+    if (task == null) 
+    {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     return new ResponseEntity<>(task, HttpStatus.OK);
 }
-
     
 }

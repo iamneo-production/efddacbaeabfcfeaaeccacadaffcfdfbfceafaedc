@@ -1,5 +1,7 @@
 package com.examly.services;
 
+import java.util.Optional;
+
 import com.examly.model.Task;
 import org.springframework.stereotype.Service;
 import com.examly.repository.Taskrepository;
@@ -16,8 +18,8 @@ public class Taskservice{
         return savedTask;
     }
 
-    public Task getTask(Long taskId) {
-        return null;
+    public Optional<Task> getTask(Long taskId) {
+        return taskRepository.getTask(taskId);
     }
     
 }
