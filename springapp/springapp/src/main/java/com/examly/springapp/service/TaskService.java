@@ -29,9 +29,9 @@ public class TaskService
         return taskRepository.getById(id);
     }
 
-    public void deleteTask(Task task) 
+    public void deleteTask(Long id) 
     {
-        taskRepository.delete(task);
+        taskRepository.deleteById(id);
     }
       
     public Task updateTask(Task task) 
