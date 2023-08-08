@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
-@RequestMapping("/api/v1/tasks")
+@RequestMapping("task")
 public class TaskController
 {
 
@@ -34,12 +33,8 @@ public class TaskController
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         return ResponseEntity.ok(taskService.createNewTask(task));
     }
-    @PutMapping("/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
-        task.setId(id);
-        return ResponseEntity.ok(taskService.updateTask(task));
-    }
-    @DeleteMapping("/{id}")
+
+    @DeleteMapping("/deleteTask/{id}")
     public ResponseEntity<Boolean> getAllTasks(@PathVariable Long id) {
         taskService.deleteTask(id);
         return ResponseEntity.ok(true);
