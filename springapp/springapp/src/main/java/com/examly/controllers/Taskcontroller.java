@@ -1,16 +1,11 @@
 package com.examly.controllers;
 
-import java.util.HashMap;
 import java.util.List;
-import javax.persistence.EntityNotFoundException;
-
+import java.util.Optional;
 import com.examly.model.Task;
-import com.examly.services.Taskservice;
 import com.examly.repository.Taskrepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class Taskcontroller {
     
     @Autowired
-    private Taskservice taskservice;
     private Taskrepository taskRepository;
 
     @GetMapping("/alltasks")
@@ -38,17 +32,17 @@ public class Taskcontroller {
     }
     @PutMapping("/changeStatus/{id}")
     public Task changeStatus(@RequestBody Task task) {
-        return ResponseEntity.ok(taskservice.updateTask(task));
+        return taskRepository.save(task);
     }
 
     @GetMapping("/getTask")
-    public ResponseEntity<Task> getTask(@PathVariable Long taskId)
+    public Optional<Task> getTask(@PathVariable Long taskId)
     {
-        return ResponseEntity.ok(taskservice.findTaskById(taskId));
+        return taskRepository.findById(taskId);
     }
-    @GetMapping("/deleteTask")
-    public ResponseEntity<Boolean> deleteTask(@PathVariable Long taskId) {
-        taskservice.deleteTask(taskId);
-        return ResponseEntity.ok(true);
+    @DeleteMapping("/deleteTask")
+    public void deleteTask(@PathVariable Long taskId) 
+    {
+        taskRepository.deleteById(taskId);
     }
 }

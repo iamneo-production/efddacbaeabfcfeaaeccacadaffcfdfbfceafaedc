@@ -3,7 +3,6 @@ package com.examly.model;
 import java.util.Date;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -25,7 +24,7 @@ public class Task
         this.taskName = taskName;
         this.taskStatus = taskStatus;
     }
-    
+
     public Long getTaskId() {
         return taskId;
     }
