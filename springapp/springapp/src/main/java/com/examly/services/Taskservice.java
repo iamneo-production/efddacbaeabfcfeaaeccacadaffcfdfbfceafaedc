@@ -1,6 +1,7 @@
 package com.examly.services;
 
-import java.util.List;
+
+import java.util.Optional;
 
 import com.examly.model.Task;
 import org.springframework.stereotype.Service;
@@ -11,16 +12,19 @@ public class Taskservice{
 
     private Taskrepository taskRepository;
 
-    public Task saveTask(Task task) 
+    public Task saveTask(Task task)
     {
-        Task savedTask = taskRepository.save(task);
-        savedTask.setTaskId(task.getTaskId());
-        return savedTask;
+        return taskRepository.save(task);
     }
 
-    public Task getTask(Long taskId) {
-        Task task = taskRepository.findById(taskId).orElse(null);
-        return task;
+    public boolean existById(Long taskId) 
+    {
+        return taskRepository.existsById(taskId);
+    }
+   
+    public Optional<Task> getTaskById(Long taskId)
+    {
+        return taskRepository.findById(taskId);
     }
     
 }
