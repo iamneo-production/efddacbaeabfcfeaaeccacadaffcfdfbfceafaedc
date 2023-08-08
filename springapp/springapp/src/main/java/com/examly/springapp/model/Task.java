@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Column;
 
 @Entity
-@Column(name ="/tasks")
 public class Task 
 {
     @Id
