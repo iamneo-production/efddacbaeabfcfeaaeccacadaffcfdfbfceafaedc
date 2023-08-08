@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/tasks")
+@RequestMapping("task")
 public class Taskcontroller {
     
     @Autowired
@@ -41,12 +41,12 @@ public class Taskcontroller {
         return ResponseEntity.ok(taskservice.updateTask(task));
     }
 
-    @GetMapping("/getTask/{id}")
+    @GetMapping("/getTask")
     public ResponseEntity<Task> getTask(@PathVariable Long taskId)
     {
         return ResponseEntity.ok(taskservice.findTaskById(taskId));
     }
-    @DeleteMapping("/deleteTask/{id}")
+    @DeleteMapping("/deleteTask")
     public ResponseEntity<Boolean> getAllTasks(@PathVariable Long taskId) {
         taskservice.deleteTask(taskId);
         return ResponseEntity.ok(true);
