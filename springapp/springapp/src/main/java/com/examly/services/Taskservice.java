@@ -1,7 +1,6 @@
 package com.examly.services;
 
 import com.examly.model.Task;
-import java.util.List;
 import org.springframework.stereotype.Service;
 import com.examly.repository.Taskrepository;
 
