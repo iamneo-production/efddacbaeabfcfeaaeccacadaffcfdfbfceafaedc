@@ -3,6 +3,7 @@ package com.examly.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.examly.model.Task;
 import com.examly.repository.Taskrepository;
@@ -10,21 +11,31 @@ import com.examly.repository.Taskrepository;
 @Service
 public class Taskservice{
 
+    @Autowired
     private Taskrepository taskRepository;
 
-    public Taskservice(Taskrepository taskRepository) {
-        this.taskRepository = taskRepository;
+    public Task createTask(Task task)
+    {
+        return taskRepository.save(task);
     }
-    public List<Task> getAllTasks() {
+
+    public List<Task> getAllTask()
+    {
         return taskRepository.findAll();
     }
-    public Task createTask(Task task) {
-        return taskRepository.save(task);
+
+    public Task findTaskById(Long taskId)
+    {
+        return taskRepository.getById(taskId);
     }
-    public Task updateTask(Long taskId, Task task) {
-        return taskRepository.save(task);
+
+    public void deleteTask(Task task)
+    {
+        taskRepository.delete(task);
     }
-    public void deleteTask(Long taskId) {
-        taskRepository.deleteById(id);
+
+    public Task updateTask(Task task)
+    {
+        return taskRepository.s
     }
 }
