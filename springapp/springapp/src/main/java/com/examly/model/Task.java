@@ -25,8 +25,7 @@ public class Task
         this.taskName = taskName;
         this.taskStatus = taskStatus;
     }
-    public Task() {
-    }
+    
     public Long getTaskId() {
         return taskId;
     }

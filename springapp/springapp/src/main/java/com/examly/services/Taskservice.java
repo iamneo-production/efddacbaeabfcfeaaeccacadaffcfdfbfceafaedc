@@ -21,10 +21,10 @@ public class Taskservice{
     public Task createTask(Task task) {
         return taskRepository.save(task);
     }
-    public Task updateTask(Long id, Task task) {
+    public Task updateTask(Long taskId, Task task) {
         return taskRepository.save(task);
     }
-    public void deleteTask(Long id) {
+    public void deleteTask(Long taskId) {
         taskRepository.deleteById(id);
     }
 }
