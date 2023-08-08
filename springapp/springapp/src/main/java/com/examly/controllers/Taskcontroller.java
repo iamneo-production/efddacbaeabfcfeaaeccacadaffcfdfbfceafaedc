@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/tasks")
 public class Taskcontroller {
 
     @Autowired
@@ -30,6 +30,15 @@ public class Taskcontroller {
     {
         return taskservice.saveTask(task);
     }
+
+    @GetMapping("/tasks/{taskId}") 
+    public ResponseEntity<Task> getTask(@PathVariable Long taskId) 
+    Task task = taskService.getTask(taskId);
+    if (task == null) {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    return new ResponseEntity<>(task, HttpStatus.OK);
+}
 
     
 }
