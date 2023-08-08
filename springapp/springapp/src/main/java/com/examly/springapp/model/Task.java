@@ -15,6 +15,34 @@ public class Task
     private String taskStatus;
 
     public Task(String taskHolderName,Date taskDate,String taskName,String taskStatus)
+    {
+        this.taskHolderName=taskHolderName;
+        this.taskDate=taskDate;
+        this.taskName=taskName;
+        this.taskStatus=taskStatus;
+    }
+
+    public Long gettaskId()
+    {
+        return taskId;
+    }
+
+    public void settaskId(Long taskId)
+    {
+        this.taskId=taskId;
+    }
+
+    public String gettaskHolderName()
+    {
+        return taskHolderName;
+    }
+
+    public void settaskHolderName(String taskHolderName)
+    {
+        this.taskHolderName=taskHolderName;
+    }
+
+
 
 
 
