@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages={"com.examly.controller"})
+@SpringBootApplication(scanBasePackages={"com.examly"})
 @EnableAutoConfiguration
 
 public class SpringappApplication {

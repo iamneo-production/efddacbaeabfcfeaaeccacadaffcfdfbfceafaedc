@@ -22,6 +22,7 @@ public class Taskcontroller {
 
     @GetMapping("/")
     public ResponseEntity<Task> addTask(@RequestBody Task task) {
+        Task
         Task savedTask = taskservice.saveTask(task);
         return new ResponseEntity<>(savedTask, HttpStatus.CREATED);
     }

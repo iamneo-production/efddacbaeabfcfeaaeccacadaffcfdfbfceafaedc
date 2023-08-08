@@ -18,10 +18,6 @@ public class Taskservice{
         return savedTask;
     }
 
-    public List<Task> getTasks() {
-        List<Task> tasks = taskRepository.findAll();
-        return tasks;
-    }
     public Task getTask(Long taskId) {
         Task task = taskRepository.findById(taskId).orElse(null);
         return task;
