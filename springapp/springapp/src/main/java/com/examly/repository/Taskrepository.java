@@ -8,9 +8,4 @@ import java.util.List;
 
 @Repository
 public interface Taskrepository extends JpaRepository<Task,Long>{
-    public Task findByTask(String taskHolderName);
-    public List<Task> findByCompletedTrue();
-    public List<Task> findByCompletedFalse();
-    public List<Task> findAll();
-    public Task getById(Long taskId);
 }
