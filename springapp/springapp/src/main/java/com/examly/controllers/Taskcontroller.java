@@ -28,15 +28,15 @@ public class Taskcontroller {
     private Taskservice taskservice;
 
     @GetMapping("/alltasks")
-    public ResponseEntity<List<Task>> getAllTasks() {
+    public ResponseEntity<List<Task>> alltasks() {
         return ResponseEntity.ok(taskservice.getAllTask());
     }
     @PostMapping("/saveTask")
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+    public ResponseEntity<Task> saveTask(@RequestBody Task task) {
         return ResponseEntity.ok(taskservice.createNewTask(task));
     }
     @PutMapping("/changeStatus/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long taskId, @RequestBody Task task) {
+    public ResponseEntity<Task> changeStatus(@PathVariable Long taskId, @RequestBody Task task) {
         task.setTaskId(taskId);
         return ResponseEntity.ok(taskservice.updateTask(task));
     }
@@ -47,7 +47,7 @@ public class Taskcontroller {
         return ResponseEntity.ok(taskservice.findTaskById(taskId));
     }
     @DeleteMapping("/deleteTask")
-    public ResponseEntity<Boolean> getAllTasks(@PathVariable Long taskId) {
+    public ResponseEntity<Boolean> deleteTask(@PathVariable Long taskId) {
         taskservice.deleteTask(taskId);
         return ResponseEntity.ok(true);
     }
