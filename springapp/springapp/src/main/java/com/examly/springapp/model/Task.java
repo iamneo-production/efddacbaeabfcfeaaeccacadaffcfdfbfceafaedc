@@ -29,9 +29,55 @@ public class Task
         this.taskStatus=taskStatus;
     }
 
-    public long setTaskId()
+    public Long getTaskId()
     {
         return taskId;
     }
+
+    public void setTaskId(Long taskId)
+    {
+        this.taskId=taskId;
+    }
+
+    public String getTaskHolderName()
+    {
+        return taskHolderName;
+    }
+
+    public void setTaskHolderName(String taskHolderName)
+    {
+        this.taskHolderName=taskHolderName;
+    }
+
+    public Date getTaskDate()
+    {
+        return taskDate;
+    }
+
+    public void setTaskDate(Date taskDate)
+    {
+        this.taskDate=taskDate;
+    }
+
+    public String getTaskName()
+    {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName)
+    {
+        this.taskName=taskName;
+    }
+
+    public String getTaskName()
+    {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName)
+    {
+        this.taskName=taskName;
+    }
+    
 
 }
