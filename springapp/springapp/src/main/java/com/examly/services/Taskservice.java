@@ -15,5 +15,9 @@ public class Taskservice{
         savedTask.setTaskId(task.getTaskId());
         return savedTask;
     }
+
+    public Task getTask(Long taskId) {
+        return null;
+    }
     
 }
