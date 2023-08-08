@@ -14,7 +14,7 @@ public class Taskservice{
     @Autowired
     private Taskrepository taskRepository;
 
-    public Task createTask(Task task)
+    public Task createNewTask(Task task)
     {
         return taskRepository.save(task);
     }
@@ -36,6 +36,6 @@ public class Taskservice{
 
     public Task updateTask(Task task)
     {
-        return taskRepository.s
+        return taskRepository.save(task);
     }
 }
