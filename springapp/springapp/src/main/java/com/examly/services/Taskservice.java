@@ -3,16 +3,17 @@ package com.examly.services;
 import com.examly.model.Task;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import com.examly.repository.Taskrepository;
 
 @Service
 public class Taskservice{
 
-    public Task saveTask(Task task) {
-        // TODO: save task to database
+    private Taskrepository taskRepository;
+
+    public Task saveTask(Task task) 
+    {
+        taskRepository.save(task);
         return task;
     }
-    public List<Task> getTasks() {
-        // TODO: get tasks from database
-        return null;
-}
+    
 }
