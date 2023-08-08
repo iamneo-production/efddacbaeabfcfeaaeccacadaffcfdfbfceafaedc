@@ -32,7 +32,7 @@ public class Taskcontroller {
         return taskservice.saveTask(task);
     }
 
-    @GetMapping("/tasks/{taskId}") 
+    @GetMapping("/getTask/{taskId}") 
     public ResponseEntity<Task> getTask(@PathVariable Long taskId) {
 
     Task task = taskservice.getTask(taskId);
