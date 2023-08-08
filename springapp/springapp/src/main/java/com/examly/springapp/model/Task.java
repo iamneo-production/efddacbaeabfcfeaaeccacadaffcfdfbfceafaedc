@@ -2,7 +2,6 @@ package com.examly.springapp.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -69,15 +68,14 @@ public class Task
         this.taskName=taskName;
     }
 
-    public String getTaskName()
+    public String getTaskStatus()
     {
-        return taskName;
+        return taskStatus;
     }
 
-    public void setTaskName(String taskName)
+    public void setTaskStatus(String taskStatus)
     {
-        this.taskName=taskName;
+        this.taskStatus=taskStatus;
     }
-    
 
 }
