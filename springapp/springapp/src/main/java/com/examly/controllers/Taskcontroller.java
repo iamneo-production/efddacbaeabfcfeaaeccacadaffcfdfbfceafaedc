@@ -31,10 +31,5 @@ public class Taskcontroller {
         return taskservice.saveTask(task);
     }
 
-    @PostMapping("/tasks/add")
-public ResponseEntity<Task> addTask(@RequestBody Task task) {
-    Task savedTask = taskService.saveTask(task);
-    return new ResponseEntity<>(savedTask, HttpStatus.CREATED);
-}
-
+    
 }
