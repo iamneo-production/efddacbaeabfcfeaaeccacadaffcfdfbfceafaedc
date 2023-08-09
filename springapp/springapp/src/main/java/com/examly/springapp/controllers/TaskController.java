@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @RestController
-@RequestMapping("/taskmgmt")
 public class TaskController {
 
     private TaskService taskService;
