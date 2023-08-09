@@ -14,9 +14,6 @@ public class TaskService
 
     public Task saveTasks(Task task) 
     {
-        task.setTaskHolderName("Gowthaman M");
-        task.setTaskName("Spring Projects");
-        task.setTaskStatus("In Progress");
         return taskRepository.save(task);
     }
       
