@@ -11,21 +11,13 @@ import com.examly.springapp.model.Task;
 import com.examly.springapp.repository.TaskRepository;
 
 @Service
-public class TaskService{
-
+public class TaskService 
+{
     @Autowired
-    private TaskRepository taskRepository;
-
-    public List < Task > getTaskByTaskHolderName(String taskHolderName) {
-        return taskRepository.findByTaskHolderName(taskHolderName);
-    }
-
-    public Optional < Task > getTaskById(long taskId) {
-        return taskRepository.findById(taskId);
-    }
-
-    public void chagngeStatus(Task task) {
-        taskRepository.save(task);
+    private final TaskRepository taskRepository;
+    public TaskService(TaskRepository taskRepository) 
+    {
+        this.taskRepository = taskRepository;
     }
 
     public void addTask(String taskHolderName, Date taskDate, String taskName,String taskStatus ) 
@@ -44,4 +36,25 @@ public class TaskService{
     public void saveTask(Task task) {
         taskRepository.save(task);
     }
+
+    public Task updateTask(Long id, Task task) {
+        Task updatedTask = taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid task id: " + id));
+        updatedTask.setStatus(task.getStatus());
+        updatedTask.setDescription(task.getDescription());
+        updatedTask.setDueDate(task.getDueDate());
+        return taskRepository.save(updatedTask);
+
+@Service
+public class TaskService {
+    private final TaskRepository taskRepository;
+    public TaskService(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+    public List<Task> getAllTasks() {
+        return taskRepository.findAll();
+    }
+}
+    }
+}
+
 }
