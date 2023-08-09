@@ -16,19 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TaskController {
 
+    @Autowired
     private TaskService taskService;
-    private TaskRepository taskRepository;
 
     @GetMapping("/getTask")
-    public List<Task> findAll()
+    public List<Task> getTask()
     {
-        return taskRepository.findAll();
+        return taskService.getAllTask();
     }
 
     @PostMapping("/saveTask")
-    public Task save(@RequestBody Task task)
+    public Task saveTask(@RequestBody Task task)
     {
-        return taskRepository.save(task);
+        return taskService.saveTasks(task);
     }
     
 

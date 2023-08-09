@@ -12,7 +12,13 @@ public class TaskService
     @Autowired
     private TaskRepository taskRepository;
 
-    public Task createNewTask() {
+    public Task saveTasks(Task task) 
+    {
+        task.setTaskId("12211");
+        task.setTaskHolderName("Gowthaman M");
+        task.setTaskDate("2021/04/15");
+        task.setTaskName("Spring Projects");
+        task.setTaskStatus("In Progress");
         return taskRepository.save(task);
     }
       
