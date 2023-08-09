@@ -1,18 +1,24 @@
 package com.examly.springapp.controllers;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import java.util.List;
 
 import com.examly.springapp.model.Task;
 import com.examly.springapp.service.TaskService;
 
-@Controller
+@RestController
+@RequestMapping("/api/v1")
 public class TaskController 
 {
-    @Autowired
     private TaskService taskService;
+
+    @GetMapping("/taskmgmt")
+    public List<Task> getTask(){
+        return taskService.getTasks();
+    }
 
 
 }
