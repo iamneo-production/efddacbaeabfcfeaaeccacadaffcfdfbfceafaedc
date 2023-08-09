@@ -1,11 +1,13 @@
 package com.examly.springapp.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @RestController
 @RequestMapping("/taskmgmt")
 public class TaskController {
 
-    private Taskservice taskservice;
+    private TaskService taskService;
 
     @GetMapping
     public List<Task> getTask()
