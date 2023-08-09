@@ -13,7 +13,12 @@ public class TaskService
     private TaskRepository taskRepository;
 
     public Task createNewTask(Task task) {
-        
+        Task task = new Task();
+        task.setTName("Task 1");
+        task.setDescription("This is a task");
+        task.setStatus("To Do");
+        task.setDueDate(LocalDate.now().plusDays(1));
+        taskRepository.save(task);
         return taskRepository.save(task);
     }
       
