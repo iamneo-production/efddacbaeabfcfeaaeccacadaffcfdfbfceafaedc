@@ -15,10 +15,10 @@ public class TaskController
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 
-    @RequestMapping(value = "/add-todo", method = RequestMethod.GET)
-    public String showAddTodoPage(ModelMap model) {
-        model.addAttribute("todo", new Todo());
-        return "todo";
+    @RequestMapping(value = "/addtask", method = RequestMethod.GET)
+    public String addtask(ModelMap model) {
+        model.addAttribute("task", new Task());
+        return "task";
     }
 
     @RequestMapping(value = "/deleteTask/{id}", method = RequestMethod.GET)
@@ -28,22 +28,10 @@ public class TaskController
     }
 
     @RequestMapping(value = "/chagngeStatus/{id}", method = RequestMethod.GET)
-    public String chagngeStatus(@RequestParam long id, ) {
+    public String chagngeStatus(@RequestParam long id, ModelMap model) {
         Task task = taskService.getTaskById(id).get();
         model.put("task", task);
         return "task";
-    }
-
-    @RequestMapping(value = "/update-todo", method = RequestMethod.POST)
-    public String updateTodo(ModelMap model, @Valid Todo todo, BindingResult result) {
-
-        if (result.hasErrors()) {
-            return "todo";
-        }
-
-        todo.setUserName(getLoggedInUserName(model));
-        todoService.updateTodo(todo);
-        return "redirect:/list-todos";
     }
 
     @RequestMapping(value = "/add-todo", method = RequestMethod.POST)
@@ -60,4 +48,3 @@ public class TaskController
 }
 
     
-}
