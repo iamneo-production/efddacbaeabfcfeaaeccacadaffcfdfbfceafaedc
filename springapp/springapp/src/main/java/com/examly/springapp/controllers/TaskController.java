@@ -12,23 +12,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 public class TaskController {
 
     private TaskService taskService;
-    private TaskRepository taskRepository;
 
     @GetMapping("/getTask")
-    public List<Task> findAll()
-    {
-        return taskRepository.findAll();
+    public ResponseEntity<List<Task>> getAllTasks() {
+        return ResponseEntity.ok(taskService.getAllTask());
     }
 
-    @PostMapping("/saveTask")
-    public Task save(@RequestBody Task task)
-    {
-        return taskRepository.save(task);
+    @PostMapping("/")
+    public ResponseEntity<Task> createTask(@RequestBody Task task) {
+        return ResponseEntity.ok(taskService.createNewTask(task));
     }
 
 }
