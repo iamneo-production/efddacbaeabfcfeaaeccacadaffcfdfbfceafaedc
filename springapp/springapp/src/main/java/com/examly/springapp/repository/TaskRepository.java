@@ -1,6 +1,11 @@
 package com.examly.springapp.repository;
 
-public interface TaskRepository extends JpaRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.examly.springapp.model.Task;
+
+public interface TaskRepository extends JpaRepository < Task, Long > 
+{   
     
 }
 
