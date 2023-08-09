@@ -1,5 +1,6 @@
 package com.examly.springapp.controllers;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,12 +11,13 @@ import com.examly.springapp.model.Task;
 import com.examly.springapp.service.TaskService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/task")
+@CrossOrigin("*")
 public class TaskController 
 {
     private TaskService taskService;
 
-    @GetMapping("/task")
+    @GetMapping("/")
     public List<Task> getTask(){
         return taskService.getTasks();
     }
