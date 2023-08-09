@@ -14,8 +14,12 @@ public class TaskService
 {
     @Autowired
     private TaskRepository taskRepository;
-
-    public List<Task> getTasks(){
+    
+    public Task createNewTask(Task task) {
+        return taskRepository.save(task);
+    }
+      
+    public List<Task> getAllTask() {
         return taskRepository.findAll();
     }
 
