@@ -1,3 +1,6 @@
-public interface TaskRepository {
+package com.examly.springapp.repository;
+
+public interface TaskRepository extends JpaRepo {
     
 }
+
