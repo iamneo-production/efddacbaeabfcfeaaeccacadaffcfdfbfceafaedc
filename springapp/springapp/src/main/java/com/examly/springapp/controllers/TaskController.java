@@ -22,29 +22,18 @@ public class TaskController
     }
 
     @RequestMapping(value = "/deleteTask/{id}", method = RequestMethod.GET)
-    public String deleteTask(@RequestParam long id) {
-        taskService.deleteTask(id);
+    public String deleteTask(@RequestParam long taskId) {
+        taskService.deleteTask(taskId);
         return "redirect:/deleteTask/{id}";
     }
 
     @RequestMapping(value = "/chagngeStatus/{id}", method = RequestMethod.GET)
-    public String chagngeStatus(@RequestParam long id, ModelMap model) {
-        Task task = taskService.getTaskById(id).get();
+    public String chagngeStatus(@RequestParam long taskId, ModelMap model) {
+        Task task = taskService.getTaskByTaskId(taskId).get();
         model.put("task", task);
         return "task";
     }
 
-    @RequestMapping(value = "/add-todo", method = RequestMethod.POST)
-    public String addTodo(ModelMap model, @Valid Todo todo, BindingResult result) {
-
-        if (result.hasErrors()) {
-            return "todo";
-        }
-
-        todo.setUserName(getLoggedInUserName(model));
-        todoService.saveTodo(todo);
-        return "redirect:/list-todos";
-    }
 }
 
     
