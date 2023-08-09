@@ -9,7 +9,7 @@ public class TaskController {
 
     private TaskService taskService;
 
-    @GetMapping
+    @GetMapping("/")
     public List<Task> getTask()
     {
         return taskservice.getAllTasks();
