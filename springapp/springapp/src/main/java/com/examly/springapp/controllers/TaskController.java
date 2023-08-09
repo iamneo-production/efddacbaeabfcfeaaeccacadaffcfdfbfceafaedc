@@ -1,5 +1,10 @@
 package com.examly.springapp.controllers;
 
-public class TaskController {
-    
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class TaskController 
+{
+    @Autowired
+    private TaskService taskService;
 }

@@ -10,7 +10,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tasks")
-public class Task {
+public class Task 
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,11 +23,13 @@ public class Task {
 
     private String taskStatus;
 
-    public Task() {
+    public Task() 
+    {
         super();
     }
 
-    public Task(String taskHolderName, Date taskDate, String taskName,String taskStatus ) {
+    public Task(String taskHolderName, Date taskDate, String taskName,String taskStatus ) 
+    {
         super();
         this.taskHolderName = taskHolderName;
         this.taskDate = taskDate;
@@ -34,45 +37,55 @@ public class Task {
         this.taskStatus = taskStatus;
     }
 
-    public long getTaskId() {
+    public long getTaskId() 
+    {
         return taskId;
     }
 
-    public void setTaskId(long taskId) {
+    public void setTaskId(long taskId) 
+    {
         this.taskId = taskId;
     }
 
-    public String getTaskHolderName() {
+    public String getTaskHolderName() 
+    {
         return taskHolderName;
     }
 
-    public void setTaskHolderName(String taskHolderName) {
+    public void setTaskHolderName(String taskHolderName) 
+    {
         this.taskHolderName = taskHolderName;
     }
 
-    public Date getTaskDate() {
+    public Date getTaskDate() 
+    {
         return taskDate;
     }
 
-    public void setTaskDate(Date taskDate) {
+    public void setTaskDate(Date taskDate) 
+    {
         this.taskDate = taskDate;
     }
 
-    public String getTaskName() {
+    public String getTaskName() 
+    {
         return taskName;
     }
 
-    public void setTaskName(String taskName) {
+    public void setTaskName(String taskName) 
+    {
         this.taskName = taskName;
     }
 
-    public String getTaskStatus() {
+    public String getTaskStatus() 
+    {
         return taskStatus;
     }
 
-    public void setTaskName(String taskStatus) {
+    public void setTaskStatus(String taskStatus)
+    {
         this.taskStatus = taskStatus;
     }
 
 }
-}
+
