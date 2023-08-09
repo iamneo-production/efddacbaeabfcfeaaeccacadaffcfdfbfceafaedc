@@ -11,13 +11,13 @@ import com.examly.springapp.model.Task;
 import com.examly.springapp.repository.TaskRepository;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/taskproject")
 public class TaskController 
 {
     @Autowired
     private TaskRepository taskRepository;
 
-    @GetMapping("/taskproject")
+    @GetMapping("/getTask")
     public List<Task> getAllTasks(){
         return taskRepository.findAll();
     }
