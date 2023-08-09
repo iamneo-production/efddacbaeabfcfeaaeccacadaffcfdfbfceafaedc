@@ -18,8 +18,9 @@ public class TaskController
     private TaskRepository taskRepository;
 
     @GetMapping("/taskproject")
-    public List<Task> findAll(){
+    public List<Task> getTask(){
         return taskRepository.findAll();
     }
 
+    @Post
 }
