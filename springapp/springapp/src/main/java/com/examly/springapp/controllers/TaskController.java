@@ -10,12 +10,12 @@ import com.examly.springapp.model.Task;
 import com.examly.springapp.service.TaskService;
 
 @RestController
-@RequestMapping(value = "/task")
+@RequestMapping(value = "/taskno")
 public class TaskController 
 {
     private TaskService taskService;
 
-    @GetMapping("/")
+    @GetMapping
     public List<Task> getTask(){
         return taskService.getTasks();
     }
