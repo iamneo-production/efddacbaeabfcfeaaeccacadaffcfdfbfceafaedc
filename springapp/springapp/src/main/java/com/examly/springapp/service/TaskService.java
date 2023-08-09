@@ -23,7 +23,7 @@ public class TaskService{
 
     @Override
     public Optional < Task > getTaskByTaskId(long taskId) {
-        return taskRepository.findByTaskId(taskId);
+        return taskRepository.findById(taskId);
     }
 
     @Override
