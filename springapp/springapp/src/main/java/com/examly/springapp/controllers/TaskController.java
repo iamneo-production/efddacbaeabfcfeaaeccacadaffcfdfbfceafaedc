@@ -8,13 +8,13 @@ public class TaskController {
 
     private TaskService taskService;
 
-    @GetMapping("/")
+    @GetMapping("/getTask")
     public List<Task> getTask()
     {
         return taskservice.getAllTasks();
     }
 
-    @PostMapping
+    @PostMapping("")
     public Task addTask(@RequestBody Task task)
     {
         return taskservice.saveTask(task); 
