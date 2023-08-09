@@ -15,7 +15,7 @@ public class TaskController
 {
     private TaskService taskService;
 
-    @GetMapping
+    @GetMapping("/")
     public List<Task> getTask(){
         return taskService.getTasks();
     }

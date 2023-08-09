@@ -15,7 +15,6 @@ public class TaskService
     @Autowired
     private TaskRepository taskRepository;
 
-    @Transactional(readOnly = true)
     public List<Task> getTasks(){
         return taskRepository.findAll();
     }
