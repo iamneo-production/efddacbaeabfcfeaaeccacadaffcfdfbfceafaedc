@@ -3,12 +3,9 @@ package com.examly.springapp.controllers;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -48,7 +45,7 @@ public class TaskController
 
     @RequestMapping(value = "/chagngeStatus/{id}", method = RequestMethod.GET)
     public String chagngeStatus(@RequestParam long taskId, ModelMap model) {
-        Task task = taskService.getTaskByTaskId(taskId).get();
+        Task task = taskService.getTaskById(taskId).get();
         model.put("task", task);
         return "task";
     }
