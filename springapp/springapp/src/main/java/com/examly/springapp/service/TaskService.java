@@ -13,12 +13,6 @@ public class TaskService
     private TaskRepository taskRepository;
 
     public Task createNewTask() {
-        Task task = new Task();
-        task.setTaskHolderName("Gowthaman M");
-        task.setTaskDate("2021/04/15");
-        task.setTaskName("Spring Projects");
-        task.setTaskStatus("In Progress");
-        taskRepository.save(task);
         return taskRepository.save(task);
     }
       
