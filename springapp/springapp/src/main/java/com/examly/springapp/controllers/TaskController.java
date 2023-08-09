@@ -26,6 +26,11 @@ public class TaskController {
 
     @PostMapping("/createTask")
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
+        task.setTaskHolderName("Gowthaman M");
+        task.setTaskDate("2021/04/15");
+        task.setTaskName("Spring Projects");
+        task.setTaskStatus("In Progress");
+        taskRepository.save(task);
         return ResponseEntity.ok(taskService.createNewTask(task));
     }
 
