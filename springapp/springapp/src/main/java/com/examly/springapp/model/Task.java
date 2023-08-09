@@ -7,26 +7,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Column;
 
 @Entity
-@Table(name="taskId")
+@Table(name="taskproject")
 public class Task 
 {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long taskId;
 
+    @Column(name="taskHolderName")
     private String taskHolderName;
+
+    @Column(name="taskDate")
     private Date taskDate;
+
+    @Column(name="taskName")
     private String taskName;
 
+    @Column(name="taskStatus")
     private String taskStatus;
-
-    public Task() 
-    {
-        super();
-    }
 
     public Task(String taskHolderName, Date taskDate, String taskName,String taskStatus ) 
     {

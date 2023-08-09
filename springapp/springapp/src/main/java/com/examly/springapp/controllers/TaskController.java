@@ -13,7 +13,7 @@ import com.examly.springapp.model.Task;
 import com.examly.springapp.service.TaskService;
 
 @RestController
-@RequestMapping("/api/v1/taskno")
+@RequestMapping("/api/v1/task")
 public class TaskController 
 {
     private TaskService taskService;
