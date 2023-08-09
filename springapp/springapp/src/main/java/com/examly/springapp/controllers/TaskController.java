@@ -20,13 +20,10 @@ public class TaskController
 
     @PostMapping("/")
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
+        
         return ResponseEntity.ok(taskService.createNewTask(task));
     }
     
-    @GetMapping("/")
-    public ResponseEntity<List<Task>> getAllTasks() {
-        return ResponseEntity.ok(taskService.getAllTask());
-    }
 
 
 }
