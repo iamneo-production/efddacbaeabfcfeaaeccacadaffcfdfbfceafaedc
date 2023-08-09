@@ -50,6 +50,25 @@ public class TaskController
         return "task";
     }
 
+    @GetMapping("/getTask/{id}")
+    public Task getTask(@PathVariable Long taskId) {
+        return taskService.getTaskById(taskId);
+    }
+
+    @PostMapping("/tasks")
+    public ResponseEntity<Task> saveTask(@RequestBody Task task)
+    {
+    taskRepository.save(task);
+    return ResponseEntity.ok(task);
+    }
+
+    @GetMapping("/tasks")
+    public List<Task> getAllTasks() 
+    {
+    return taskRepository.findAll();
+    }
+ 
+
 }
 
     

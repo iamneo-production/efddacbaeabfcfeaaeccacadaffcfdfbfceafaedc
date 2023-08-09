@@ -37,24 +37,17 @@ public class TaskService
         taskRepository.save(task);
     }
 
-    public Task updateTask(Long id, Task task) {
+    public Task chagngeStatus(Long id, Task task) 
+    {
         Task updatedTask = taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid task id: " + id));
-        updatedTask.setStatus(task.getStatus());
-        updatedTask.setDescription(task.getDescription());
-        updatedTask.setDueDate(task.getDueDate());
+        updatedTask.setTaskStatus(task.getTaskStatus());
         return taskRepository.save(updatedTask);
-
-@Service
-public class TaskService {
-    private final TaskRepository taskRepository;
-    public TaskService(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
     }
-    public List<Task> getAllTasks() {
+
+    public List<Task> getAllTasks() 
+    {
         return taskRepository.findAll();
     }
 }
-    }
-}
 
-}
+
