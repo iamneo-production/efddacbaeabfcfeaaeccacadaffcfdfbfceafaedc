@@ -2,18 +2,18 @@ package com.examly.springapp.controllers;
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/taskmgmt")
 public class TaskController {
 
     private Taskservice taskservice;
 
-    @GetMapping("/alltasks")
+    @GetMapping
     public List<Task> getTask()
     {
         return taskservice.getAllTasks();
     }
 
-    @PostMapping("/task")
+    @PostMapping
     public Task addTask(@RequestBody Task task)
     {
         return taskservice.saveTask(task); 
