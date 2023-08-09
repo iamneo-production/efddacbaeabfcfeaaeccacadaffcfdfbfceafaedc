@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "tasks")
 public class Task {
@@ -17,8 +18,6 @@ public class Task {
 
     private String taskHolderName;
     private Date taskDate;
-
-    @Size(min = 10, message = "Enter at least 10 Characters...")
     private String taskName;
 
     private String taskStatus;
@@ -27,43 +26,53 @@ public class Task {
         super();
     }
 
-    public Task(String user, String desc, Date targetDate, boolean isDone) {
+    public Task(String taskHolderName, Date taskDate, String taskName,String taskStatus ) {
         super();
-        this.userName = user;
-        this.description = desc;
-        this.targetDate = targetDate;
+        this.taskHolderName = taskHolderName;
+        this.taskDate = taskDate;
+        this.taskName = taskName;
+        this.taskStatus = taskStatus;
     }
 
-    public long getId() {
-        return id;
+    public long getTaskId() {
+        return taskId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setTaskId(long taskId) {
+        this.taskId = taskId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getTaskHolderName() {
+        return taskHolderName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setTaskHolderName(String taskHolderName) {
+        this.taskHolderName = taskHolderName;
     }
 
-    public String getDescription() {
-        return description;
+    public Date getTaskDate() {
+        return taskDate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTaskDate(Date taskDate) {
+        this.taskDate = taskDate;
     }
 
-    public Date getTargetDate() {
-        return targetDate;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setTargetDate(Date targetDate) {
-        this.targetDate = targetDate;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
+
+    public String getTaskStatus() {
+        return taskStatus;
+    }
+
+    public void setTaskName(String taskStatus) {
+        this.taskStatus = taskStatus;
+    }
+
 }
 }
