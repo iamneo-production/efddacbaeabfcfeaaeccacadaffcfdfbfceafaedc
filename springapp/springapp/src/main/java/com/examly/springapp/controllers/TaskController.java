@@ -20,9 +20,4 @@ public class TaskController {
         return taskService.getAllTasks();
     }
 
-    @PostMapping("/saveTask")
-    public Task addTask(@RequestBody Task task)
-    {
-        return taskService.saveTask(task); 
-    } 
 }

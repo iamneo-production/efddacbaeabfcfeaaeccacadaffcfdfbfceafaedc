@@ -13,15 +13,6 @@ public class TaskService
     private TaskRepository taskRepository;
     
 
-    public void addTask(String taskHolderName, Date taskDate, String taskName,String taskStatus ) 
-    {
-        taskRepository.save(new Task(taskHolderName, taskDate, taskName, taskStatus));
-    }
-
-    public void saveTask(Task task) {
-        taskRepository.save(task);
-    }
-
     public List<Task> getAllTasks() 
     {
         return taskRepository.findAll();
