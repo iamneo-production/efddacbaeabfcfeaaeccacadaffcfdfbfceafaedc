@@ -1,5 +1,6 @@
 package com.examly.springapp.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,18 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import com.examly.springapp.model.Task;
-import com.examly.springapp.service.TaskService;
+import com.examly.springapp.repository.TaskRepository;
 
 @RestController
-@RequestMapping("/api/v1/task")
+@RequestMapping("/api/v1")
 public class TaskController 
 {
-    private TaskService taskService;
+    @Autowired
+    private TaskRepository taskRepository;
 
-    @PostMapping("/")
-    public ResponseEntity<Task> createTask(@RequestBody Task task) {
-        
-        return ResponseEntity.ok(taskService.createNewTask(task));
+    @GetMapping("/tasknj")
+    public List<Task> getAllTasks(){
+        return taskRepository.findAll();
     }
     
 

@@ -12,15 +12,7 @@ import com.examly.springapp.repository.TaskRepository;
 @Service
 public class TaskService 
 {
-    @Autowired
-    private TaskRepository taskRepository;
-
-    public Task createNewTask(Task task) {
-        return taskRepository.save(task);
-    }
-      
-
-    
+   
 }
 
 
