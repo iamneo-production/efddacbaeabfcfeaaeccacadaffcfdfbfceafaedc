@@ -1,6 +1,7 @@
 package com.examly.springapp.service;
 
-import java.util.*;
+import java.util.List;
+import java.util.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.examly.springapp.model.Task;
 import com.examly.springapp.repository.TaskRepository;
@@ -14,9 +15,8 @@ public class TaskService
 
     public Task saveTasks(Task task) 
     {
-        task.setTaskId("12211");
         task.setTaskHolderName("Gowthaman M");
-        task.setTaskDate("2021/04/15");
+        task.setTaskDate(LocalDate.now().plusDays(1));
         task.setTaskName("Spring Projects");
         task.setTaskStatus("In Progress");
         return taskRepository.save(task);
