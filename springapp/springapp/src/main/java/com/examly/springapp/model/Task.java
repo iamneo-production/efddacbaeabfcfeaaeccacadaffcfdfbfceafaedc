@@ -6,16 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "tasks")
 public class Task 
 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long taskId;
+    private Long taskId;
 
     private String taskHolderName;
     private Date taskDate;
@@ -86,6 +84,5 @@ public class Task
     {
         this.taskStatus = taskStatus;
     }
-
 }
 
