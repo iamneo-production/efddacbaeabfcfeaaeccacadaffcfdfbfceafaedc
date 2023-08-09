@@ -1,6 +1,8 @@
 package com.examly.springapp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import com.examly.springapp.TaskService;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @RestController
@@ -11,12 +13,12 @@ public class TaskController {
     @GetMapping("/getTask")
     public List<Task> getTask()
     {
-        return taskservice.getAllTasks();
+        return taskService.getAllTasks();
     }
 
-    @PostMapping("")
+    @PostMapping("/saveTask")
     public Task addTask(@RequestBody Task task)
     {
-        return taskservice.saveTask(task); 
+        return taskService.saveTask(task); 
     } 
 }
