@@ -20,11 +20,9 @@ public class TaskController
     @Autowired
     private TaskRepository taskRepository;
 
-    @GetMapping("/tasknj")
+    @GetMapping("/taskproject")
     public List<Task> getAllTasks(){
         return taskRepository.findAll();
     }
-    
-
 
 }
