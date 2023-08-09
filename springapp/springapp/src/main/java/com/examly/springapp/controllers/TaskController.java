@@ -1,7 +1,11 @@
 package com.examly.springapp.controllers;
 
 import java.util.List;
+
+import com.examly.springapp.service.TaskService;
 import com.examly.springapp.model.Task;
+import com.examly.springapp.repository.TaskRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import com.examly.springapp.service.TaskService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,17 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class TaskController {
 
     private TaskService taskService;
+    private TaskRepository taskRepository;
 
     @GetMapping("/getTask")
-    public List<Task> getTask()
+    public List<Task> findAll()
     {
-        return taskService.getAllTasks();
+        return taskRepository.findAll();
     }
 
     @PostMapping("/saveTask")
-    public Task save(@RequestBody Task taskId)
+    public Task save(@RequestBody Task task)
     {
-        
+        return taskRepository.save(task);
     }
 
 }
