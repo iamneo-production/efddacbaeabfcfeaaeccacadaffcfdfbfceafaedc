@@ -10,7 +10,8 @@ public class TaskService
 {
     private TaskRepository taskRepository;
       
-    public List<Task> getAllTask() {
+    public List<Task> getAllTask() 
+    {
         return taskRepository.findAll();
     }
 
