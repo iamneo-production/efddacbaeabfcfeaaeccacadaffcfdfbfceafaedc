@@ -36,13 +36,13 @@ public class TaskController {
         return taskService.getAllTasks();
     }
 
-    @GetMapping("/getTask/{taskId}")
+    @GetMapping("/getTask")
     public Task getTaskId(@PathVariable Long taskId)
     {
         return taskService.getTaskById(taskId);
     }
 
-    @GetMapping("/deleteTask/{taskid}")
+    @GetMapping("/deleteTask")
     public void deleteTask(@PathVariable Long taskid){
         taskService.deleteTask(taskid);
     }
