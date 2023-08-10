@@ -21,10 +21,10 @@ public class TaskController {
     @Autowired
     private TaskRepository taskRepository;
 
-    @GetMapping("/saveTask")
-    public List<Task> getTask()
-    {
-        return taskService.getTasks();
+    @PostMapping("/admin/addtask")
+    public Task addtask(@RequestBody Task task){
+        addonservice.addAddon(task);
+        return task;
     }
 
     @PostMapping("/saveTask")
