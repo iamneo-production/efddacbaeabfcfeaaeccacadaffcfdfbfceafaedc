@@ -14,19 +14,10 @@ public class Task
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name="task_id")
     private Integer taskId;
-
-    @Column(name="task_holdername")
     private String taskHolderName;
-
-    @Column(name="task_date")
     private String taskDate;
-
-    @Column(name="task_name")
     private String taskName;
-
-    @Column(name="task_status")
     private String taskStatus;
 
     public Task()
