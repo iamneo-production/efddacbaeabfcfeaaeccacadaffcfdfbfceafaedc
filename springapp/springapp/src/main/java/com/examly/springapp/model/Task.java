@@ -83,6 +83,18 @@ public class Task
         this.taskStatus = taskStatus;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+            " taskId='" + getTaskId() + "'" +
+            ", email='" + getTaskHolderName() + "'" +
+            ", password='" + getPassword() + "'" +
+            ", username='" + getUsername() + "'" +
+            ", mobileNumber='" + getMobileNumber() + "'" +
+            ", userRole='" + getUserRole() + "'" +
+            "}";
+    }
+
 }
 
 
