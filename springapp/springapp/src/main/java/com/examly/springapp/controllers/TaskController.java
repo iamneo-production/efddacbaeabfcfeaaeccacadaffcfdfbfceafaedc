@@ -34,7 +34,7 @@ public class TaskController {
     }
 
     @GetMapping("/getTask")
-    public Optional<Task>  getTaskId(@PathVariable Integer taskid){
+    public Optional<Task>  getTaskId(@RequestParam Integer taskid){
        return taskService.getTaskId(taskid);
     }
 
