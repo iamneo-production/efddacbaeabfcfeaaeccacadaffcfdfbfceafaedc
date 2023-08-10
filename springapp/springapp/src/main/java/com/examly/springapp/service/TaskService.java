@@ -14,22 +14,21 @@ public class TaskService
 {
     @Autowired
     private TaskRepository taskRepository;
-      
-    public List<Task> getTask() 
-    {
+
+    public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
 
-    public Task save(Task task) {
-        return taskRepository.save(task);
+    public Task getTaskById(Long id) {
+        return taskRepository.findById(id).orElse(null);
     }
 
-    public Optional<Task> getTaskId(Long taskid){
-        return taskRepository.findById(taskid);
+    public void saveTask(Task task) {
+        taskRepository.save(task);
     }
 
-	public void deleteTask(Long taskId){
-        taskRepository.deleteById(taskId);
+    public void deleteTask(Long id) {
+        taskRepository.deleteById(id);
     }
-
+    
 }
