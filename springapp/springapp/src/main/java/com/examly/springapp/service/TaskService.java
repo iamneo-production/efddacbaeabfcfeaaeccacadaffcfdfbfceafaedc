@@ -22,5 +22,9 @@ public class TaskService
 
     public Task save(Task task) {
         return taskRepository.saveAndFlush(task);
+    }
+
+    public Task getTaskId(Long taskid) {
+        return null;
     }    
 }
