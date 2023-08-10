@@ -26,7 +26,7 @@ public class TaskController {
         return taskService.saveTasks(task);
     }
 
-    @GetMapping("/saveTask")
+    @GetMapping("/Tasks")
     public List<Task> saveTask()
     {
         return taskService.getAllTask();
