@@ -19,8 +19,8 @@ public class TaskService
         return taskRepository.findAll();
     }
 
-    public Task getTaskById(Long id) {
-        return taskRepository.findById(id).orElse(null);
+    public Task getTaskById(Long taskId) {
+        return taskRepository.findById(taskId).orElse(null);
     }
 
     public void saveTask(Task task) {

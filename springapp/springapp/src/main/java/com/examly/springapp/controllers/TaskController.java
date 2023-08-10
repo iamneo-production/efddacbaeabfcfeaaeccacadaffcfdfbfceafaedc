@@ -31,9 +31,9 @@ public class TaskController {
     }
 
     @GetMapping("/getTask/{taskId}")
-    public Optional<Task> getTaskId(@PathVariable Long taskId)
+    public Task getTaskId(@PathVariable Long taskId)
     {
-        return taskService.getTaskId(taskId);
+        return taskService.getTaskById(taskId);
     }
 
     @GetMapping("/deleteTask/{taskid}")
