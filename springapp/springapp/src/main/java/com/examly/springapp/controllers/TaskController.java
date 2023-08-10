@@ -26,10 +26,13 @@ public class TaskController {
         return taskService.getTasks();
     }
 
-    @PostMapping("/saveTask")
+    @PostMapping("/alltasks")
     public Task addTask(@RequestBody Task task) {
         return taskService.save(task);
     }
+
+    @PutMapping("/alltasks/{id}")
+    public Task 
 
 
     
