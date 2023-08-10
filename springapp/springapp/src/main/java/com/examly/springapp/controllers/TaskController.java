@@ -7,7 +7,6 @@ import com.examly.springapp.model.Task;
 import com.examly.springapp.repository.TaskRepository;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,13 +38,13 @@ public class TaskController {
     return ResponseEntity.ok(task);
     }
 
-    @GetMapping("/getTask/{taskid}")
-    public Task  getTaskId(@RequestParam Integer taskid){
+    @GetMapping("/getTask")
+    public Task  getTaskId(@PathVariable Integer taskid){
        return taskService.getTaskId(taskid);
     }
 
-    @GetMapping("/deleteTask/{taskid}")
-    public void deleteTask(@RequestParam Integer taskid) 
+    @GetMapping("/deleteTask")
+    public void deleteTask(@PathVariable Integer taskid) 
     {
         taskService.deleteTaskById(taskid);
     }
