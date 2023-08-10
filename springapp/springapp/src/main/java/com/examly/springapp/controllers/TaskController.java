@@ -34,13 +34,13 @@ public class TaskController {
     }
 
     @GetMapping("/getTask")
-    public Task  getTaskId(@PathVariable Integer taskid){
+    public Optional<Task>  getTaskId(@PathVariable Integer taskid){
        return taskService.getTaskId(taskid);
     }
 
-    @DeleteMapping("/deleteTask/{addOnid}")
+    @DeleteMapping("/deleteTask")
     public ResponseEntity<Map<String, Boolean>> deleteTask(@PathVariable Integer taskid){
-        taskService.delete(taskid);
+        taskService.deleteTask(taskid);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted",Boolean.TRUE);
         return ResponseEntity.ok(response);

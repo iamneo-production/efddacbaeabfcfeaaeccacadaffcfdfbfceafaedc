@@ -24,18 +24,11 @@ public class TaskService
         return taskRepository.saveAndFlush(task);
     }
 
-    public Task getTaskId(Integer taskid) {
-        Optional<Task> optional = taskRepository.findById(taskid);
-		Task task = null;
-		if (optional.isPresent()) {
-			task = optional.get();
-		} else {
-			throw new RuntimeException(" Employee not found for id :: " + taskid);
-		}
-		return task;
-	}  
+    public Optional<Task> getTaskId(Integer taskId){
+        return taskRepository.findById(taskId);
+    }
 
-	public void deleteTaskById(Integer taskid) {
-		this.taskRepository.deleteById(taskid);
-	}
+	public void deleteTask(Integer taskId){
+        taskRepository.deleteById(taskId);
+    }
 }
