@@ -19,12 +19,17 @@ public class TaskService
         return taskRepository.findAll();
     }
 
-    public Task getTaskById(Long taskId) {
-        return taskRepository.findById(taskId).orElse(null);
-    }
 
     public void saveTask(Task task) {
         taskRepository.save(task);
+    }
+
+    public List<Task> getTasks() {
+        return taskRepository.findAll();
+    }
+
+    public Task getTaskById(Long taskId) {
+        return taskRepository.findById(taskId).orElse(null);
     }
 
     public void deleteTask(Long id) {
