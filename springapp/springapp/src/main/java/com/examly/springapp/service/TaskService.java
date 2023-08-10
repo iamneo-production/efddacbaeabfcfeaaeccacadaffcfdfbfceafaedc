@@ -21,6 +21,6 @@ public class TaskService
     }
 
     public Task save(Task task) {
-        return null;
+        return taskRepository.saveAndFlush(task);
     }    
 }
