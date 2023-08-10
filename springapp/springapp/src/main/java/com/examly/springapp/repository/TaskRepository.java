@@ -8,7 +8,7 @@ import com.examly.springapp.model.Task;
 
 
 @Repository
-public interface TaskRepository extends JpaRepository < Task, Long > 
+public interface TaskRepository extends JpaRepository < Task, Integer > 
 {   
     public Task findByTask(String task);
     public List<Task> findAll();

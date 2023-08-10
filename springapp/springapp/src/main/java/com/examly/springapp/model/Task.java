@@ -13,12 +13,17 @@ public class Task
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int taskId;
+    private Integer taskId;
     private String taskHolderName;
     private Long taskDate;
     private String taskName;
 
     private String taskStatus;
+
+    public Task()
+    {
+        super();
+    }
 
     public Task(String taskHolderName, Long taskDate, String taskName,String taskStatus) 
     {
