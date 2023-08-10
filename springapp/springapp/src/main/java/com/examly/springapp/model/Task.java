@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Table(name="task")
 public class Task 
 {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer taskId;
