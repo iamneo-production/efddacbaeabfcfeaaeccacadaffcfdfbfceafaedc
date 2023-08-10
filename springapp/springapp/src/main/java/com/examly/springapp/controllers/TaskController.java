@@ -19,16 +19,17 @@ public class TaskController {
 
     private TaskService taskService;
 
+    @PostMapping("/saveTask")
+    public Task saveTask(@RequestBody Task task)
+    {
+        taskService.saveTasks(task);
+        return task;
+    }
+
     @GetMapping("/alltasks")
     public List<Task> alltasks()
     {
         return taskService.getAllTask();
-    }
-
-    @PostMapping("/saveTask")
-    public Task saveTask(@RequestBody Task task)
-    {
-        return taskService.saveTasks(task);
     }
     
 
