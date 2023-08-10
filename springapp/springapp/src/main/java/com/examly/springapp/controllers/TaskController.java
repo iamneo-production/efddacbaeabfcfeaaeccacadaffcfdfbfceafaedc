@@ -32,15 +32,15 @@ public class TaskController {
         return taskService.save(task);
     }
 
-    @GetMapping("/alltasks/{id}")
+    @GetMapping("/alltasks/{taskid}")
     public Task  getTaskId(@PathVariable Long taskid){
        return taskService.getTaskId(taskid);
     }
 
-    @DeleteMapping("/admin/deleteAddon/{addOnid}")
-    public ResponseEntity<Map<String, Boolean>> deleteAddon(@PathVariable Long addOnid){
-        taskService.deleteAddon(addOnid);
-        Map<String, Boolean> response = new HashMap<>();
+    @DeleteMapping("/admin/deleteAddon/{taskid}")
+    public ResponseEntity<Task> deleteTask(@PathVariable Long taskid){
+        taskService.deleteTask(taskid);
+        Task response = new HashMap<>();
         response.put("deleted",Boolean.TRUE);
         return ResponseEntity.ok(response);
 }
