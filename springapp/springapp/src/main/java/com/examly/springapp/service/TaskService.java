@@ -24,11 +24,11 @@ public class TaskService
         return taskRepository.saveAndFlush(task);
     }
 
-    public Optional<Task> getTaskId(Integer taskId){
-        return taskRepository.findById(taskId);
+    public Optional<Task> getTaskId(Long taskid){
+        return taskRepository.findById(taskid);
     }
 
-	public void deleteTask(Integer taskId){
+	public void deleteTask(Long taskId){
         taskRepository.deleteById(taskId);
     }
 }

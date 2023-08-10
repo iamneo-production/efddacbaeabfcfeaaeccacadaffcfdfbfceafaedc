@@ -11,7 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping
+
 public class TaskController {
 
     @Autowired
@@ -33,13 +34,13 @@ public class TaskController {
     return ResponseEntity.ok(task);
     }
 
-    @GetMapping("/getTask")
-    public Optional<Task>  getTaskId(@RequestParam Integer taskid){
+    @GetMapping("/getTask/{taskid}")
+    public Optional<Task>  getTaskId(@PathVariable Long taskid){
        return taskService.getTaskId(taskid);
     }
 
-    @DeleteMapping("/deleteTask")
-    public ResponseEntity<Map<String, Boolean>> deleteTask(@PathVariable Integer taskid){
+    @GetMapping("/deleteTask/{taskid}")
+    public ResponseEntity<Map<String, Boolean>> deleteTask(@PathVariable Long taskid){
         taskService.deleteTask(taskid);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted",Boolean.TRUE);
