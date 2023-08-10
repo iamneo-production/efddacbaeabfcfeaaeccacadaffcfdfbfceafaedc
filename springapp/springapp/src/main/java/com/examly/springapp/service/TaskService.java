@@ -6,6 +6,7 @@ import com.examly.springapp.repository.TaskRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TaskService 
@@ -13,16 +14,9 @@ public class TaskService
     @Autowired
     private TaskRepository taskRepository;
       
-    @Trac
+    @Transactional(readOnly = true)
     public List<Task> getTasks() 
     {
         return taskRepository.findAll();
-    }
-
-    public Task saveTasks(Task task) 
-    {
-        return taskRepository.save(task);
-    }
-
-    
+    }    
 }
