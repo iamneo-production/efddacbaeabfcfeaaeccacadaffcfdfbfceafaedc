@@ -17,5 +17,11 @@ public class TaskService
     {
         return taskRepository.findAll();
     }
+
+    public Task saveTasks(Task task) 
+    {
+        return taskRepository.save(task);
+    }
+
     
 }
