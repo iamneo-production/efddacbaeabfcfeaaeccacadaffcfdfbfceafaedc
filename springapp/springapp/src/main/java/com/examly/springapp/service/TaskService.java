@@ -31,4 +31,8 @@ public class TaskService
 	public void deleteTask(Long taskId){
         taskRepository.deleteById(taskId);
     }
+
+    public void changeStatus(Long taskid) {'
+    
+    }
 }

@@ -43,13 +43,13 @@ public class TaskController {
     }
 
     @PutMapping("/admin/editAddon/{addOnid}")
-    public ResponseEntity<Task> changeStatus(@PathVariable Long taskid,@RequestBody Task task){
-        Task tasks = taskService.getTaskId(taskid); 
+    public ResponseEntity<?> changeStatus(@PathVariable Long taskid,@RequestBody Task task){
+        Task tasks = taskService.getTaskById(taskid); 
         tasks.setTaskHolderName(task.getTaskHolderName());
-        taskid.setTaskDate(task.getTaskDate());
-        taskid.setaddonDescription(task.getTaskName());
-
-        taskService.editAddon(taskid);
+        tasks.setTaskDate(task.getTaskDate());
+        tasks.setTaskName(task.getTaskName());
+        tasks.setTaskStatus(task.getTaskStatus());
+        taskService.changeStatus(taskid);
         return ResponseEntity.ok(taskid);
     }
 
