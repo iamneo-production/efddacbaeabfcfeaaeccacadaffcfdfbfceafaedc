@@ -31,8 +31,8 @@ public class TaskController {
         return taskService.save(task);
     }
 
-    @PutMapping("/alltasks/{id}")
-    public Task 
+    @GetMapping("/alltasks/{id}")
+    public Task addTask(@RequestBody Task taskPara,@P)
 
 
     
