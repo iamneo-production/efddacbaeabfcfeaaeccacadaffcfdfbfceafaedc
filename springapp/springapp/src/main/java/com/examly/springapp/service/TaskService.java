@@ -15,7 +15,7 @@ public class TaskService
     @Autowired
     private TaskRepository taskRepository;
       
-    public List<Task> getTasks() 
+    public List<Task> getTask() 
     {
         return taskRepository.findAll();
     }

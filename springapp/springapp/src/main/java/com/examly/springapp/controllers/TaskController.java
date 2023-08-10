@@ -18,32 +18,39 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @Autowired
-    private TaskRepository taskRepository;
-
-    @PostMapping("/admin/addtask")
+    @PostMapping("/saveTask")
     public Task addtask(@RequestBody Task task){
-        taskService.addtask(task);
+        taskService.save(task);
         return task;
     }
 
-    @GetMapping("/admin/getTask")
+    @GetMapping("/alltasks")
     public List<Task> getTask()
     {
-        List<Task> task = taskService.getTask();
-        return task;
+        return taskService.getTask();
     }
 
 
-    @GetMapping("/admin/getTask/{taskId}")
-    public Long getTaskId(@PathVariable Long taskId)
+    @GetMapping("/getTask/{taskId}")
+    public Optional<Task> getTaskId(@PathVariable Long taskId)
     {
-        Task task = taskService.getTaskId(taskId);
-        return taskId;
+        return taskService.getTaskId(taskId);
     }
 
     @GetMapping("/deleteTask/{taskid}")
     public void deleteTask(@PathVariable Long taskid){
         taskService.deleteTask(taskid);
+    }
+
+    @PutMapping("/admin/editAddon/{addOnid}")
+    public ResponseEntity<AddOnModel> editAddon(@PathVariable Long addOnid,@RequestBody AddOnModel addOn){
+        Task task = taskService.getAddonId(addOnid);  
+        tasktask.setAddOnName(addOn.getAddOnName());
+  addonItems.setaddAddonPrice(addOn.getaddAddonPrice());
+  addonItems.setaddonDescription(addOn.getaddonDescription());
+  addonservice.editAddon(addonItems);
+  return ResponseEntity.ok(addonItems);
+
 }
+
 }
