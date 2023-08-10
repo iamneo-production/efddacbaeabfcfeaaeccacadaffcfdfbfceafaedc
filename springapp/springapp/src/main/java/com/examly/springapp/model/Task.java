@@ -21,7 +21,7 @@ public class Task
     private String taskHolderName;
 
     @Column(name="task_date")
-    private Long taskDate;
+    private String taskDate;
 
     @Column(name="task_name")
     private String taskName;
@@ -33,7 +33,7 @@ public class Task
     {
     }
 
-    public Task(Integer taskId, String taskHolderName, Long taskDate, String taskName,String taskStatus) 
+    public Task(Integer taskId, String taskHolderName, String taskDate, String taskName,String taskStatus) 
     {
         super();
         this.taskId=taskId;
@@ -63,12 +63,12 @@ public class Task
         this.taskHolderName = taskHolderName;
     }
 
-    public Long getTaskDate() 
+    public String getTaskDate() 
     {
         return taskDate;
     }
 
-    public void setTaskDate(Long taskDate) 
+    public void setTaskDate(String taskDate) 
     {
         this.taskDate = taskDate;
     }
