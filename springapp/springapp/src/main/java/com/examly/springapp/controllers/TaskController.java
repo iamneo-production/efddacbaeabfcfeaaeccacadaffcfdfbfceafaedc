@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,19 +31,21 @@ public class TaskController {
         return taskService.getTasks();
     }
 
-    @PostMapping("/tasks")
+    @PostMapping("/alltasks")
     public ResponseEntity<Task> saveTask(@RequestBody Task task)
     {
     taskRepository.save(task);
     return ResponseEntity.ok(task);
     }
 
-    @GetMapping("/alltasks/{taskid}")
-    public Task  getTaskId(@PathVariable Long taskid){
+    @GetMapping("/getTask/{taskid}")
+    public Task  getTaskId(@PathVariable Integer taskid){
        return taskService.getTaskId(taskid);
     }
 
-
-    
-
+    @GetMapping("/deleteTask/{taskid}")
+    public void deleteTask(@PathVariable Integer taskid) 
+    {
+        taskService.deleteTaskById(taskid);
+    }
 }
