@@ -30,7 +30,6 @@ public class TaskController {
         return taskService.getTask();
     }
 
-
     @GetMapping("/getTask/{taskId}")
     public Optional<Task> getTaskId(@PathVariable Long taskId)
     {
@@ -41,5 +40,4 @@ public class TaskController {
     public void deleteTask(@PathVariable Long taskid){
         taskService.deleteTask(taskid);
     }
-
 }
