@@ -1,5 +1,6 @@
 package com.examly.springapp.model;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,26 +15,26 @@ public class Task
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name="task_Id")
+    @Column(name="task_id")
     private Integer taskId;
 
-    @Column(name="task_HolderName")
+    @Column(name="task_holdername")
     private String taskHolderName;
 
-    @Column(name="task_Date")
-    private String taskDate;
+    @Column(name="task_date")
+    private Date taskDate;
 
-    @Column(name="task_Name")
+    @Column(name="task_name")
     private String taskName;
 
-    @Column(name="task_Status")
+    @Column(name="task_status")
     private String taskStatus;
 
     public Task()
     {
     }
 
-    public Task(Integer taskId, String taskHolderName, String taskDate, String taskName,String taskStatus) 
+    public Task(Integer taskId, String taskHolderName, Date taskDate, String taskName,String taskStatus) 
     {
         super();
         this.taskId=taskId;
@@ -63,12 +64,12 @@ public class Task
         this.taskHolderName = taskHolderName;
     }
 
-    public String getTaskDate() 
+    public Date getTaskDate() 
     {
         return taskDate;
     }
 
-    public void setTaskDate(String taskDate) 
+    public void setTaskDate(Date taskDate) 
     {
         this.taskDate = taskDate;
     }
