@@ -20,13 +20,13 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @PostMapping("/alltasks")
+    @PostMapping("/saveTask")
     public Task saveTask(@RequestBody Task task)
     {
         return taskService.saveTasks(task);
     }
 
-    @GetMapping("/alltasks")
+    @GetMapping("/saveTask")
     public List<Task> alltasks()
     {
         return taskService.getAllTask();
