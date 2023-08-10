@@ -18,5 +18,9 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    
+    @GetMapping("/create")
+    public String createTask(Task task) {
+        task.addAttribute("task", new Task());
+        return "task/create";
+    }
 }
