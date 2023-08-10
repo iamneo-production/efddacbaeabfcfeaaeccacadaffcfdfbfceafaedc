@@ -39,9 +39,9 @@ public class TaskController {
        return taskService.getTaskId(taskid);
     }
 
-    @GetMapping("/deleteTask/{taskid}")
-    public ResponseEntity<<Map<String, Boolean>>> deleteTask(@PathVariable Long taskid){
+    @DeleteMapping("/deleteTask/{taskid}")
+    public ResponseEntity<Void> deleteTask(@PathVariable Long taskid) {
         taskService.deleteTask(taskid);
-        return ResponseEntity.ok(response);
-}
+        return ResponseEntity.noContent().build();
+    }
 }
