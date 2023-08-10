@@ -15,7 +15,7 @@ public class Task
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name="task_Id")
-    private long taskId;
+    private Long taskId;
 
     @Column(name="task_HolderName")
     private String taskHolderName;
@@ -33,7 +33,7 @@ public class Task
     {
     }
 
-    public Task(long taskId, String taskHolderName, long taskDate, String taskName,String taskStatus) 
+    public Task(Long taskId, String taskHolderName, long taskDate, String taskName,String taskStatus) 
     {
         super();
         this.taskId=taskId;
@@ -43,12 +43,12 @@ public class Task
         this.taskStatus = taskStatus;
     }
 
-    public int getTaskId() 
+    public Long getTaskId() 
     {
         return taskId;
     }
 
-    public void setTaskId(int taskId) 
+    public void setTaskId(Long taskId) 
     {
         this.taskId = taskId;
     }
@@ -63,12 +63,12 @@ public class Task
         this.taskHolderName = taskHolderName;
     }
 
-    public Long getTaskDate() 
+    public long getTaskDate() 
     {
         return taskDate;
     }
 
-    public void setTaskDate(Long taskDate) 
+    public void setTaskDate(long taskDate) 
     {
         this.taskDate = taskDate;
     }
