@@ -40,10 +40,8 @@ public class TaskController {
     }
 
     @GetMapping("/deleteTask/{taskid}")
-    public ResponseEntity<Map<String, Boolean>> deleteTask(@PathVariable Long taskid){
+    public ResponseEntity<<Map<String, Boolean>>> deleteTask(@PathVariable Long taskid){
         taskService.deleteTask(taskid);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted",Boolean.TRUE);
         return ResponseEntity.ok(response);
 }
 }
