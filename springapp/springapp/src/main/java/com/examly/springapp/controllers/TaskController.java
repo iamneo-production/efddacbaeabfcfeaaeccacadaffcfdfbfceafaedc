@@ -39,12 +39,12 @@ public class TaskController {
     return ResponseEntity.ok(task);
     }
 
-    @GetMapping("/getTask")
+    @GetMapping("/getTask/{taskid}")
     public Task  getTaskId(@RequestParam Integer taskid){
        return taskService.getTaskId(taskid);
     }
 
-    @GetMapping("/deleteTask")
+    @GetMapping("/deleteTask/{taskid}")
     public void deleteTask(@RequestParam Integer taskid) 
     {
         taskService.deleteTaskById(taskid);
