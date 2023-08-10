@@ -29,10 +29,10 @@ public class TaskController {
     @GetMapping("/saveTask")
     public List<Task> saveTask()
     {
-        return taskService.getAllTask();
+        return taskService.getTasks();
     }
 
-    
+
     
 
 }

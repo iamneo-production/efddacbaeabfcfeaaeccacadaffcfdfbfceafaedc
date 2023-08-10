@@ -13,7 +13,8 @@ public class TaskService
     @Autowired
     private TaskRepository taskRepository;
       
-    public List<Task> getAllTask() 
+    @Trac
+    public List<Task> getTasks() 
     {
         return taskRepository.findAll();
     }
