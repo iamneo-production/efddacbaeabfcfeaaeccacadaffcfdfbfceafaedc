@@ -42,15 +42,4 @@ public class TaskController {
         taskService.deleteTask(taskid);
     }
 
-    @PutMapping("/admin/editAddon/{addOnid}")
-    public ResponseEntity<?> changeStatus(@PathVariable Long taskid,@RequestBody Task task){
-        Task tasks = taskService.getTaskById(taskid); 
-        tasks.setTaskHolderName(task.getTaskHolderName());
-        tasks.setTaskDate(task.getTaskDate());
-        tasks.setTaskName(task.getTaskName());
-        tasks.setTaskStatus(task.getTaskStatus());
-        taskService.changeStatus(taskid);
-        return ResponseEntity.ok(taskid);
-    }
-
 }

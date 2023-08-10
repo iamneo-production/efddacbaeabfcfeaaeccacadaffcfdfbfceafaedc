@@ -21,7 +21,7 @@ public class TaskService
     }
 
     public Task save(Task task) {
-        return taskRepository.saveAndFlush(task);
+        return taskRepository.save(task);
     }
 
     public Optional<Task> getTaskId(Long taskid){
@@ -32,7 +32,4 @@ public class TaskService
         taskRepository.deleteById(taskId);
     }
 
-    public void changeStatus(Long taskid) {'
-    
-    }
 }
