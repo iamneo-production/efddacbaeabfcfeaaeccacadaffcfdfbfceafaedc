@@ -23,20 +23,23 @@ public class TaskController {
 
     @PostMapping("/admin/addtask")
     public Task addtask(@RequestBody Task task){
-        addonservice.addAddon(task);
+        taskService.addtask(task);
         return task;
     }
 
-    @PostMapping("/saveTask")
-    public ResponseEntity<Task> saveTask(@RequestBody Task task)
+    @GetMapping("/admin/getTask")
+    public List<Task> getTask()
     {
-    taskRepository.save(task);
-    return ResponseEntity.ok(task);
+        List<Task> task = taskService.getTask();
+        return task;
     }
 
-    @GetMapping("/getTask/{taskid}")
-    public Optional<Task>  getTaskId(@PathVariable Long taskid){
-       return taskService.getTaskId(taskid);
+
+    @GetMapping("/admin/getTask/{taskId}")
+    public Long getTaskId(@PathVariable Long taskId)
+    {
+        Task task = taskService.getTaskId(taskId);
+        return taskId;
     }
 
     @GetMapping("/deleteTask/{taskid}")
