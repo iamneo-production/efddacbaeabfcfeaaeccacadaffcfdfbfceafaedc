@@ -1,7 +1,5 @@
 package com.examly.springapp.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,12 +15,12 @@ public class Task
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int taskId;
     private String taskHolderName;
-    private long taskDate;
+    private Long taskDate;
     private String taskName;
 
     private String taskStatus;
 
-    public Task(String taskHolderName, long taskDate, String taskName,String taskStatus ) 
+    public Task(String taskHolderName, Long taskDate, String taskName,String taskStatus) 
     {
         super();
         this.taskHolderName = taskHolderName;
@@ -36,7 +34,7 @@ public class Task
         return taskId;
     }
 
-    public void setTaskId(Long taskId) 
+    public void setTaskId(int taskId) 
     {
         this.taskId = taskId;
     }
@@ -51,12 +49,12 @@ public class Task
         this.taskHolderName = taskHolderName;
     }
 
-    public Date getTaskDate() 
+    public Long getTaskDate() 
     {
         return taskDate;
     }
 
-    public void setTaskDate(Date taskDate) 
+    public void setTaskDate(Long taskDate) 
     {
         this.taskDate = taskDate;
     }
