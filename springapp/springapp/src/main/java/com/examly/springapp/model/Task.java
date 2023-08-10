@@ -5,28 +5,38 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Column;
 
 @Entity
-@Table(name="task")
+@Table(name="tasks")
 public class Task 
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer taskId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column(name="task_Id")
+    private long taskId;
+
+    @Column(name="task_HolderName")
     private String taskHolderName;
-    private Long taskDate;
+
+    @Column(name="task_Date")
+    private long taskDate;
+
+    @Column(name="task_Name")
     private String taskName;
 
+    @Column(name="task_Status")
     private String taskStatus;
 
     public Task()
     {
-        super();
     }
 
-    public Task(String taskHolderName, Long taskDate, String taskName,String taskStatus) 
+    public Task(long taskId, String taskHolderName, long taskDate, String taskName,String taskStatus) 
     {
         super();
+        this.taskId=taskId;
         this.taskHolderName = taskHolderName;
         this.taskDate = taskDate;
         this.taskName = taskName;
@@ -87,11 +97,10 @@ public class Task
     public String toString() {
         return "{" +
             " taskId='" + getTaskId() + "'" +
-            ", email='" + getTaskHolderName() + "'" +
-            ", password='" + getPassword() + "'" +
-            ", username='" + getUsername() + "'" +
-            ", mobileNumber='" + getMobileNumber() + "'" +
-            ", userRole='" + getUserRole() + "'" +
+            ", taskHolderName='" + getTaskHolderName() + "'" +
+            ", taskDate='" + getTaskDate() + "'" +
+            ", taskName='" + getTaskName() + "'" +
+            ", taskStatus='" + getTaskStatus() + "'" +
             "}";
     }
 
