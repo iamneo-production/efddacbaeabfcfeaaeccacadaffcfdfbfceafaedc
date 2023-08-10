@@ -9,21 +9,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="/taskpro")
+@Table(name="taskpro")
 public class Task 
 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long taskId;
-
+    private int taskId;
     private String taskHolderName;
-    private Date taskDate;
+    private long taskDate;
     private String taskName;
 
     private String taskStatus;
 
-    public Task(String taskHolderName, Date taskDate, String taskName,String taskStatus ) 
+    public Task(String taskHolderName, long taskDate, String taskName,String taskStatus ) 
     {
         super();
         this.taskHolderName = taskHolderName;
@@ -32,7 +31,7 @@ public class Task
         this.taskStatus = taskStatus;
     }
 
-    public Long getTaskId() 
+    public int getTaskId() 
     {
         return taskId;
     }
